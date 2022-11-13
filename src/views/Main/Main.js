@@ -8,6 +8,7 @@ const Main = () => {
     <Wrapper>
       <SectionHeader title="Our offer" />
       <Product />
+      <Product />
     </Wrapper>
   );
 };

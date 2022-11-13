@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 export const Image = styled.div`
   width: 100%;
   height: 140px;
-  background-color: tomato;
+  background-color: ${({ theme }) => theme.colors.orange}; ;
 `;
 
 export const InformationWrapper = styled.div`
