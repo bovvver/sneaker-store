@@ -9,27 +9,37 @@ import {
   Producer,
   Name,
   Description,
-  Price,
 } from "./Product.styles";
 
-const Product = () => {
+const Product = ({ image, producer, name, description, price }) => {
+  if (description.length > 160) {
+    description = description.slice(0, 160);
+    description += "...";
+  }
+
   return (
     <Wrapper>
-      <Image />
+      <Image src={image} />
       <InformationWrapper>
         <ProducerWrapper>
-          <Producer>producent</Producer>
-          <Name>name</Name>
-          <Description>description</Description>
+          <Producer>{producer}</Producer>
+          <Name>{name}</Name>
+          <Description>{description}</Description>
         </ProducerWrapper>
         <PriceWrapper>
-          <p>$10</p>
+          <p>{price}</p>
         </PriceWrapper>
       </InformationWrapper>
     </Wrapper>
   );
 };
 
-Product.propTypes = {};
+Product.propTypes = {
+  url: PropTypes.string,
+  producer: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.string,
+};
 
 export default Product;

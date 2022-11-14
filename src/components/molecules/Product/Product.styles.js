@@ -4,12 +4,19 @@ export const Wrapper = styled.div`
   margin: 2em 0;
   box-shadow: 8px 8px 24px 0px ${({ theme }) => theme.colors.shadow};
   border-radius: 30px;
+  cursor: pointer;
   overflow: hidden;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   width: 100%;
-  height: 140px;
+  height: 200px;
+  object-fit: cover;
   background-color: ${({ theme }) => theme.colors.orange}; ;
 `;
 
