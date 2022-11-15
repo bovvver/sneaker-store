@@ -11,9 +11,12 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
     }
 
+    body{
+        font-family: 'Kumbh Sans', sans-serif;
+    }
+
     #root{
         width: 100%;
         height: 100vh;
-        font-family: 'Kumbh Sans', sans-serif;
     }
 `;

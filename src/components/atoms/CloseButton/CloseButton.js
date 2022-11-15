@@ -1,25 +1,25 @@
 import React, { useContext } from "react";
-import { Bars } from "./NavBars.styles";
 import { NavContext } from "../../../providers/ContextProviders";
 
-const NavBars = () => {
+const CloseButton = () => {
   const { state, handleClick } = useContext(NavContext);
+
   return (
-    <Bars
-      width="16"
-      height="15"
+    <svg
+      width="20"
+      height="20"
       xmlns="http://www.w3.org/2000/svg"
       onClick={() => {
         handleClick(state);
       }}
     >
       <path
-        d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z"
+        d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
         fill="#69707D"
         fillRule="evenodd"
       />
-    </Bars>
+    </svg>
   );
 };
 
-export default NavBars;
+export default CloseButton;
