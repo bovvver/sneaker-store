@@ -9,6 +9,7 @@ import About from "../About/About";
 import ExtendedNav from "../../components/molecules/ExtendedNav/ExtendedNav";
 import ContextProviders from "../../providers/ContextProviders";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProductSection from "../ProductSection/ProductSection";
 
 const Root = () => {
   return (
@@ -21,6 +22,7 @@ const Root = () => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/collection/:id" element={<Main />} />
+            <Route path="/product/:id" element={<ProductSection />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </ContextProviders>

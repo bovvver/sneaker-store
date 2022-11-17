@@ -25,9 +25,11 @@ const Main = () => {
     <Wrapper>
       <SectionHeader title={title} />
       {details.map((el) => (
-        <CustomLink to={`/product/${el.producer}-${el.id.split("-")[0]}`}>
+        <CustomLink
+          key={el.id}
+          to={`/product/${el.producer}-${el.id.split("-")[0]}`}
+        >
           <Product
-            key={el.id}
             image={el.photos[0]}
             producer={el.producer}
             name={el.name}
