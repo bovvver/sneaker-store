@@ -5,6 +5,7 @@ import theme from "../../assets/styles/theme";
 import { GlobalStyle } from "../../assets/styles/GlobalStyles";
 import MobileNavigation from "../../components/organisms/MobileNavigation/MobileNavigation";
 import Main from "../Main/Main";
+import About from "../About/About";
 import ExtendedNav from "../../components/molecules/ExtendedNav/ExtendedNav";
 import ContextProviders from "../../providers/ContextProviders";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -19,10 +20,8 @@ const Root = () => {
           <ExtendedNav />
           <Routes>
             <Route path="/" element={<Main />} />
-            {/* <Route path="/men" element={<Main />} />
-            <Route path="/woman" element={<Main />} />
-            <Route path="/collections" element={<Main />} />
-            <Route path="/about" element={<Main />} /> */}
+            <Route path="/:id" element={<Main />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </ContextProviders>
       </ThemeProvider>

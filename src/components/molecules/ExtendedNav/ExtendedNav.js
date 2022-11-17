@@ -23,9 +23,6 @@ const ExtendedNav = () => {
         <StyledLink to="/women" onClick={handleClick}>
           Women
         </StyledLink>
-        <StyledLink to="/collections" onClick={handleClick}>
-          Collections
-        </StyledLink>
         <StyledLink to="/about" onClick={handleClick}>
           About Us
         </StyledLink>

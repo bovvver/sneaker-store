@@ -54,8 +54,7 @@ const data = {
       description:
         "The Air Jordan 1 High debuted in 1985 as the first signature sneaker developed by Nike for Michael Jordan. The Peter Moore designed performance basketball sneaker featured a simple Nike Dunk inspired design that incorporated the Nike Swoosh and the Jordan Wings logo and featured Nike Air. The black and red colorway of the Air Jordan 1 High was famously banned by the NBA for not adhering to the dress code. The Air Jordan 1 High was first retroed in 1994 and has seen hundreds of retro releases since.",
       price: "$180",
-      gender: "male",
-      collection: "Air",
+      gender: "men",
       photos: [Jordan1, Jordan2, Jordan3],
       largePhotos: [Jordan1Large, Jordan2Large, Jordan3Large],
     },
@@ -66,8 +65,7 @@ const data = {
       description:
         "The Nike Air Force 1 remains a popular retro shoe to this day. The Air Force 1 features an upper that is most frequently dressed in leather, a large Swoosh across the lateral and medial sides, perforated toe boxes, metal lace dubraes, and an Air-encapsulated midsole with signature “AIR” text near the rear.",
       price: "$150",
-      gender: "Unisex",
-      collection: "Air",
+      gender: "unisex",
       photos: [Force1, Force2, Force3],
       largePhotos: [Force1Large, Force2Large, Force3Large],
     },
@@ -78,8 +76,7 @@ const data = {
       description:
         "With Fila Disruptor we feel like we're back in the '90s again. Whether you're discovering it for the first time or celebrating the comeback of the sporty retro look with us, Fila Disruptor is definitely a must-have for all fans of vintage footwear. There's no other shoe like it. The extra-thick sole makes the sneaker stand out and gives you a sense of walking on clouds. The refined details, such as the special lacing, the brand logo on the side of the shoe and the tongue, make Fila Disruptor unique. ",
       price: "$70",
-      gender: "Female",
-      collection: "Fila",
+      gender: "women",
       photos: [Disruptor1, Disruptor2, Disruptor3],
       largePhotos: [Disruptor1Large, Disruptor2Large, Disruptor3Large],
     },
@@ -90,8 +87,7 @@ const data = {
       description:
         "One of the most iconic designs in a shop full of them. What started in 1977 as the Vans #36, introducing the now iconic Vans Sidestripe, became the Old Skool. They say the Classics never go out of style, and Vans Old Skool Black & White is further proof.",
       price: "$80",
-      gender: "Unisex",
-      collection: "Old Skool",
+      gender: "women",
       photos: [Vans1, Vans2, Vans3],
       largePhotos: [Vans1Large, Vans2Large, Vans3Large],
     },
@@ -102,8 +98,7 @@ const data = {
       description:
         "Yeezy is a line of sports sneakers and apparel for men. The collection was launched in 2009. It is created by American rapper, Kanye West, as part of the Adidas brand. The duo's latest offering, the Yeezy Boost sneakers, are enduringly popular.",
       price: "$220",
-      gender: "Unisex",
-      collection: "Yeezy Boost",
+      gender: "men",
       photos: [Yeezy1, Yeezy2, Yeezy3],
       largePhotos: [Yeezy1Large, Yeezy2Large, Yeezy3Large],
     },

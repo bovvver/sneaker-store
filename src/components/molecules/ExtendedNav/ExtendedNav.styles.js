@@ -38,6 +38,7 @@ export const StyledLink = styled(NavLink).attrs({ activeclassname })`
   margin: 0.5em 0;
   font-size: 2.2rem;
   color: ${({ theme }) => theme.colors.black};
+  text-align: center;
   text-decoration: none;
   transition: 0.3s;
 
