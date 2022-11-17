@@ -20,7 +20,7 @@ const Root = () => {
           <ExtendedNav />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/:id" element={<Main />} />
+            <Route path="/collection/:id" element={<Main />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </ContextProviders>

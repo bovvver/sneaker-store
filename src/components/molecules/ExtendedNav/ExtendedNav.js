@@ -17,10 +17,10 @@ const ExtendedNav = () => {
         <StyledLink to="/" onClick={handleClick}>
           Main page
         </StyledLink>
-        <StyledLink to="/men" onClick={handleClick}>
+        <StyledLink to="/collection/men" onClick={handleClick}>
           Men
         </StyledLink>
-        <StyledLink to="/women" onClick={handleClick}>
+        <StyledLink to="/collection/women" onClick={handleClick}>
           Women
         </StyledLink>
         <StyledLink to="/about" onClick={handleClick}>

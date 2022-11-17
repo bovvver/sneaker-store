@@ -4,6 +4,7 @@ import { Wrapper } from "./Main.styles";
 import Product from "../../components/molecules/Product/Product";
 import data from "../../data/data";
 import { useParams } from "react-router-dom";
+import { CustomLink } from "./Main.styles";
 
 const Main = () => {
   let title;
@@ -24,14 +25,16 @@ const Main = () => {
     <Wrapper>
       <SectionHeader title={title} />
       {details.map((el) => (
-        <Product
-          key={el.id}
-          image={el.photos[0]}
-          producer={el.producer}
-          name={el.name}
-          description={el.description}
-          price={el.price}
-        />
+        <CustomLink to={`/product/${el.producer}-${el.id.split("-")[0]}`}>
+          <Product
+            key={el.id}
+            image={el.photos[0]}
+            producer={el.producer}
+            name={el.name}
+            description={el.description}
+            price={el.price}
+          />
+        </CustomLink>
       ))}
     </Wrapper>
   );

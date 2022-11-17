@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Background from "../../assets/images/layered-waves-haikei.svg";
 
 export const Wrapper = styled.div`
   padding: 1.5em 3em;
