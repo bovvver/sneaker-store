@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 // jordan photos
 
 import Jordan1 from "../data/photos/Jordan1/jordan1small.jpg";
@@ -48,7 +46,7 @@ import Yeezy3Large from "../data/photos/Yeezy/yeezy3large.jpg";
 const data = {
   sneakers: [
     {
-      id: uuidv4(),
+      id: "21d23790-ce5c-4b33-be29-14e6b483f14c",
       name: "Air Jordan 1",
       producer: "Nike",
       description:
@@ -59,7 +57,7 @@ const data = {
       largePhotos: [Jordan1Large, Jordan2Large, Jordan3Large],
     },
     {
-      id: uuidv4(),
+      id: "14e914ae-93ba-464c-9d57-bcd93d4b96c3",
       name: "Air Force 1",
       producer: "Nike",
       description:
@@ -70,7 +68,7 @@ const data = {
       largePhotos: [Force1Large, Force2Large, Force3Large],
     },
     {
-      id: uuidv4(),
+      id: "2ae6c35c-2cba-4eae-a020-a6c81181bbc1",
       name: "Disruptor",
       producer: "Fila",
       description:
@@ -81,7 +79,7 @@ const data = {
       largePhotos: [Disruptor1Large, Disruptor2Large, Disruptor3Large],
     },
     {
-      id: uuidv4(),
+      id: "e82d1e88-c969-4948-b244-8a999a2c9222",
       name: "Old Skool Classic",
       producer: "Vans",
       description:
@@ -92,7 +90,7 @@ const data = {
       largePhotos: [Vans1Large, Vans2Large, Vans3Large],
     },
     {
-      id: uuidv4(),
+      id: "d4ba9ee0-dff5-44a8-a4e2-4cbd4906aa6b",
       name: "Yeezy Boost",
       producer: "adidas",
       description:
