@@ -31,24 +31,9 @@ export const ProducerWrapper = styled.div`
   width: 65%;
 `;
 
-export const Producer = styled.p`
-  color: ${({ theme }) => theme.colors.orange};
-  font-size: 1.6rem;
-`;
-
-export const Name = styled.h3`
-  font-size: 2.3rem;
-`;
-
-export const Description = styled.p`
-  font-size: 1.3rem;
-`;
-
 export const PriceWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 35%;
-  font-size: 2.8rem;
-  font-weight: bold;
 `;

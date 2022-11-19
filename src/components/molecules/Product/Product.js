@@ -6,10 +6,12 @@ import {
   InformationWrapper,
   ProducerWrapper,
   PriceWrapper,
-  Producer,
-  Name,
-  Description,
 } from "./Product.styles";
+
+import Producer from "../../atoms/Producer/Producer";
+import Name from "../../atoms/Name/Name";
+import Description from "../../atoms/Description/Description";
+import Price from "../../atoms/Price/Price";
 
 const Product = ({ image, producer, name, description, price }) => {
   if (description.length > 160) {
@@ -19,15 +21,15 @@ const Product = ({ image, producer, name, description, price }) => {
 
   return (
     <Wrapper>
-      <Image src={image} />
+      <Image src={image} alt={`${producer} ${name}`} />
       <InformationWrapper>
         <ProducerWrapper>
-          <Producer>{producer}</Producer>
-          <Name>{name}</Name>
-          <Description>{description}</Description>
+          <Producer content={producer} />
+          <Name content={name} />
+          <Description content={description} />
         </ProducerWrapper>
         <PriceWrapper>
-          <p>{price}</p>
+          <Price content={price} />
         </PriceWrapper>
       </InformationWrapper>
     </Wrapper>
