@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavContext } from "../../../providers/ContextProviders";
 
 const CloseButton = () => {
-  const { state, handleClick } = useContext(NavContext);
+  const { state, handleNavClick } = useContext(NavContext);
 
   return (
     <svg
@@ -10,7 +10,7 @@ const CloseButton = () => {
       height="20"
       xmlns="http://www.w3.org/2000/svg"
       onClick={() => {
-        handleClick(state);
+        handleNavClick(state);
       }}
     >
       <path

@@ -1,9 +1,9 @@
 import React from "react";
 import { CustomSvg } from "./RemoveSection.styles";
 
-const RemoveSymbol = () => {
+const RemoveSymbol = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <CustomSvg
         width="12"
         height="4"

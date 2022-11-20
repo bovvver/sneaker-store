@@ -1,8 +1,8 @@
 import React from "react";
 
-const AddSymbol = () => {
+const AddSymbol = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <svg
         width="12"
         height="12"

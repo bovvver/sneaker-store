@@ -12,13 +12,14 @@ import Description from "../../components/atoms/Description/Description";
 import Price from "../../components/atoms/Price/Price";
 import AddSymbol from "../../components/atoms/AddSymbol/AddSymbol";
 import RemoveSymbol from "../../components/atoms/RemoveSymbol/RemoveSymbol";
-import { AddButton } from "./ProductSection.styles";
 import { useParams } from "react-router-dom";
 import data from "../../data/data";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
+import Button from "../../components/atoms/Button/Button";
 
 const ProductSection = () => {
+  const [pieces, setPieces] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
   const { id } = useParams();
 
@@ -35,6 +36,14 @@ const ProductSection = () => {
   const previousPhoto = () => {
     if (photoIndex === 0) setPhotoIndex(product.photos.length - 1);
     else setPhotoIndex(photoIndex - 1);
+  };
+
+  const addPiece = () => {
+    setPieces(pieces + 1);
+  };
+
+  const removePiece = () => {
+    if (pieces !== 0) setPieces(pieces - 1);
   };
 
   const filteredArray = data.sneakers.filter(checkProduct);
@@ -60,11 +69,11 @@ const ProductSection = () => {
         <Description content={product.description} />
         <Price content={product.price} />
         <ButtonsWrapper>
-          <AddSymbol />
-          <p>0</p>
-          <RemoveSymbol />
+          <AddSymbol onClick={addPiece} />
+          <p>{pieces}</p>
+          <RemoveSymbol onClick={removePiece} />
         </ButtonsWrapper>
-        <AddButton>Add to cart</AddButton>
+        <Button content="Add to cart" />
       </Wrapper>
     </>
   );
