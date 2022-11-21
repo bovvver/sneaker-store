@@ -5,7 +5,7 @@ import CloseButton from "../../atoms/CloseButton/CloseButton";
 import { NavContext } from "../../../providers/ContextProviders";
 
 const ExtendedNav = () => {
-  const { state, handleClick } = useContext(NavContext);
+  const { state, handleNavClick } = useContext(NavContext);
   let navStyles = {};
 
   navStyles = !state ? { right: "100%" } : {};
@@ -14,16 +14,16 @@ const ExtendedNav = () => {
     <Wrapper style={navStyles}>
       <CloseButton />
       <Links>
-        <StyledLink to="/" onClick={handleClick}>
+        <StyledLink to="/" onClick={handleNavClick}>
           Main page
         </StyledLink>
-        <StyledLink to="/collection/men" onClick={handleClick}>
+        <StyledLink to="/collection/men" onClick={handleNavClick}>
           Men
         </StyledLink>
-        <StyledLink to="/collection/women" onClick={handleClick}>
+        <StyledLink to="/collection/women" onClick={handleNavClick}>
           Women
         </StyledLink>
-        <StyledLink to="/about" onClick={handleClick}>
+        <StyledLink to="/about" onClick={handleNavClick}>
           About Us
         </StyledLink>
       </Links>

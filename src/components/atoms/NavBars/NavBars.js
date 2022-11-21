@@ -3,14 +3,14 @@ import { Bars } from "./NavBars.styles";
 import { NavContext } from "../../../providers/ContextProviders";
 
 const NavBars = () => {
-  const { state, handleClick } = useContext(NavContext);
+  const { state, handleNavClick } = useContext(NavContext);
   return (
     <Bars
       width="16"
       height="15"
       xmlns="http://www.w3.org/2000/svg"
       onClick={() => {
-        handleClick(state);
+        handleNavClick(state);
       }}
     >
       <path

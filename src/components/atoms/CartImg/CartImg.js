@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../../providers/ContextProviders";
 
 import { Cart } from "./CartImg.styles";
 
 const CartImg = () => {
+  const { handleCartClick } = useContext(CartContext);
+
   return (
     <Cart
+      onClick={handleCartClick}
       width="22"
       height="20"
       xmlns="http://www.w3.org/2000/svg"

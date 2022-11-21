@@ -10,6 +10,7 @@ import ExtendedNav from "../../components/molecules/ExtendedNav/ExtendedNav";
 import ContextProviders from "../../providers/ContextProviders";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductSection from "../ProductSection/ProductSection";
+import Cart from "../../components/molecules/Cart/Cart";
 
 const Root = () => {
   return (
@@ -19,6 +20,7 @@ const Root = () => {
           <GlobalStyle />
           <MobileNavigation />
           <ExtendedNav />
+          <Cart />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/collection/:id" element={<Main />} />
