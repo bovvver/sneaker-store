@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Wrapper } from "./ProductSection.styles";
 import {
   ImageWrapper,
@@ -17,10 +17,12 @@ import data from "../../data/data";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
 import Button from "../../components/atoms/Button/Button";
+import { CartContext } from "../../providers/ContextProviders";
 
 const ProductSection = () => {
   const [pieces, setPieces] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const { handleButtonClick } = useContext(CartContext);
   const { id } = useParams();
 
   const checkProduct = (element) => {
@@ -73,7 +75,12 @@ const ProductSection = () => {
           <p>{pieces}</p>
           <RemoveSymbol onClick={removePiece} />
         </ButtonsWrapper>
-        <Button content="Add to cart" />
+        <Button
+          onClick={() => {
+            handleButtonClick(pieces, product);
+          }}
+          content="Add to cart"
+        />
       </Wrapper>
     </>
   );

@@ -31,3 +31,10 @@ export const CartProducts = styled.div`
 export const ItemsWrapper = styled.div`
   width: 100%;
 `;
+
+export const EmptyCart = styled.p`
+  padding: 2em 0;
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.darkGrayishBlue};
+  text-align: center;
+`;

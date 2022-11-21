@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Wrapper, ItemImg, ItemText } from "./CartItem.styles";
 import DeleteIcon from "../../atoms/DeleteIcon/DeleteIcon";
+import { CartContext } from "../../../providers/ContextProviders";
 
-const CartItem = ({ name }) => {
+const CartItem = ({ id, img, name, price, pieces, fullPrice }) => {
+  const { deleteItem } = useContext(CartContext);
+
   return (
     <Wrapper>
-      <ItemImg img="" />
+      <ItemImg src={img} alt={`${name}`} />
       <ItemText>
         <p>{name}</p>
         <p>
-          $125.00 x 3 <span>$375.00</span>
+          {price} x {pieces} <span>${fullPrice}</span>
         </p>
       </ItemText>
-      <button>
+      <button onClick={() => deleteItem(id)}>
         <DeleteIcon />
       </button>
     </Wrapper>
