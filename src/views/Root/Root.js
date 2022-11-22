@@ -11,6 +11,8 @@ import ContextProviders from "../../providers/ContextProviders";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductSection from "../ProductSection/ProductSection";
 import Cart from "../../components/molecules/Cart/Cart";
+import Summary from "../Summary/Summary";
+import Form from "../Form/Form";
 
 const Root = () => {
   return (
@@ -26,6 +28,8 @@ const Root = () => {
             <Route path="/collection/:id" element={<Main />} />
             <Route path="/product/:id" element={<ProductSection />} />
             <Route path="/about" element={<About />} />
+            <Route path="/summary" element={<Summary />} />
+            <Route path="/finish-page" element={<Form />} />
           </Routes>
         </ContextProviders>
       </ThemeProvider>

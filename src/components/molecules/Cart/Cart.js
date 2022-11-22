@@ -9,6 +9,7 @@ import {
 } from "./Cart.styles";
 import CartItem from "../CartItem/CartItem";
 import { CartContext } from "../../../providers/ContextProviders";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { state, cart } = useContext(CartContext);
@@ -23,11 +24,11 @@ const Cart = () => {
     <Wrapper style={cartStyles}>
       <CartHeader>Cart</CartHeader>
       <CartProducts>
-        <ItemsWrapper>
-          {cart.length === 0 ? (
-            <EmptyCart>Cart is empty.</EmptyCart>
-          ) : (
-            cart.map((el, index) => (
+        {cart.length === 0 ? (
+          <EmptyCart>Cart is empty.</EmptyCart>
+        ) : (
+          <ItemsWrapper>
+            {cart.map((el, index) => (
               <CartItem
                 key={index}
                 id={el.item.id}
@@ -37,10 +38,12 @@ const Cart = () => {
                 pieces={el.pieces}
                 fullPrice={el.pieces * +el.item.price}
               />
-            ))
-          )}
-        </ItemsWrapper>
-        <Button content="Checkout" />
+            ))}
+            <Link to="/summary">
+              <Button content="Checkout" />
+            </Link>
+          </ItemsWrapper>
+        )}
       </CartProducts>
     </Wrapper>
   );
