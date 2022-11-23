@@ -9,19 +9,15 @@ import {
 } from "./Cart.styles";
 import CartItem from "../CartItem/CartItem";
 import { CartContext } from "../../../providers/ContextProviders";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { state, cart } = useContext(CartContext);
-
-  let cartStyles = {};
-
-  cartStyles = !state
-    ? { opacity: "0", pointerEvents: "none" }
-    : { opacity: "1" };
+  const navigate = useNavigate();
 
   return (
-    <Wrapper style={cartStyles}>
+    <Wrapper
+      style={!state ? { opacity: "0", pointerEvents: "none" } : { opacity: "1" }}>
       <CartHeader>Cart</CartHeader>
       <CartProducts>
         {cart.length === 0 ? (
@@ -39,9 +35,7 @@ const Cart = () => {
                 fullPrice={el.pieces * +el.item.price}
               />
             ))}
-            <Link to="/summary">
-              <Button content="Checkout" />
-            </Link>
+            <Button onClick={() => navigate("/summary")} content="Checkout" />
           </ItemsWrapper>
         )}
       </CartProducts>

@@ -13,6 +13,7 @@ import ProductSection from "../ProductSection/ProductSection";
 import Cart from "../../components/molecules/Cart/Cart";
 import Summary from "../Summary/Summary";
 import Form from "../Form/Form";
+import Modal from "../../components/atoms/Modal/Modal";
 
 const Root = () => {
   return (
@@ -23,6 +24,7 @@ const Root = () => {
           <MobileNavigation />
           <ExtendedNav />
           <Cart />
+          <Modal />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/collection/:id" element={<Main />} />
