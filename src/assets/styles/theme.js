@@ -9,6 +9,7 @@ const theme = {
     grayishBlue: "hsl(220, 14%, 75%)",
     lightGrayishBlue: "hsl(223, 64%, 98%)",
     shadow: "rgba(66, 68, 90, 1)",
+    lightRed: "hsl(0, 72%, 67.8%)",
   },
 };
 

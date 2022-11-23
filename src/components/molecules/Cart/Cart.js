@@ -9,25 +9,22 @@ import {
 } from "./Cart.styles";
 import CartItem from "../CartItem/CartItem";
 import { CartContext } from "../../../providers/ContextProviders";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { state, cart } = useContext(CartContext);
-
-  let cartStyles = {};
-
-  cartStyles = !state
-    ? { opacity: "0", pointerEvents: "none" }
-    : { opacity: "1" };
+  const navigate = useNavigate();
 
   return (
-    <Wrapper style={cartStyles}>
+    <Wrapper
+      style={!state ? { opacity: "0", pointerEvents: "none" } : { opacity: "1" }}>
       <CartHeader>Cart</CartHeader>
       <CartProducts>
-        <ItemsWrapper>
-          {cart.length === 0 ? (
-            <EmptyCart>Cart is empty.</EmptyCart>
-          ) : (
-            cart.map((el, index) => (
+        {cart.length === 0 ? (
+          <EmptyCart>Cart is empty.</EmptyCart>
+        ) : (
+          <ItemsWrapper>
+            {cart.map((el, index) => (
               <CartItem
                 key={index}
                 id={el.item.id}
@@ -37,10 +34,10 @@ const Cart = () => {
                 pieces={el.pieces}
                 fullPrice={el.pieces * +el.item.price}
               />
-            ))
-          )}
-        </ItemsWrapper>
-        <Button content="Checkout" />
+            ))}
+            <Button onClick={() => navigate("/summary")} content="Checkout" />
+          </ItemsWrapper>
+        )}
       </CartProducts>
     </Wrapper>
   );

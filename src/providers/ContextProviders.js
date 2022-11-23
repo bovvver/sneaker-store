@@ -11,12 +11,21 @@ export const CartContext = createContext({
   cart: [],
   handleButtonClick: () => {},
   deleteItem: () => {},
+  clearCart: () => {},
+});
+
+export const ModalContext = createContext({
+  modalState: false,
+  handleModalState: () => {},
+  modalMessage: "",
 });
 
 const ContextProviders = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [opacity, setOpacity] = useState(false);
   const [cart, setCart] = useState([]);
+  const [modalState, setModalState] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleNavClick = () => {
     setOpen(!open);
@@ -49,6 +58,16 @@ const ContextProviders = ({ children }) => {
     setCart(cartCopy);
   };
 
+  const clearCart = () => setCart([]);
+
+  const handleModalState = (message) => {
+    setModalMessage(message);
+    setModalState(true);
+    setTimeout(() => {
+      setModalState(false);
+    }, 5000);
+  };
+
   return (
     <NavContext.Provider value={{ state: open, handleNavClick }}>
       <CartContext.Provider
@@ -58,9 +77,19 @@ const ContextProviders = ({ children }) => {
           cart,
           handleButtonClick,
           deleteItem,
+          clearCart,
         }}
       >
-        {children}
+        <ModalContext.Provider
+          value={{
+            modalState,
+            handleModalState,
+            modalMessage,
+            setModalMessage,
+          }}
+        >
+          {children}
+        </ModalContext.Provider>
       </CartContext.Provider>
     </NavContext.Provider>
   );

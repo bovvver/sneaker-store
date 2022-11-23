@@ -17,12 +17,13 @@ import data from "../../data/data";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
 import Button from "../../components/atoms/Button/Button";
-import { CartContext } from "../../providers/ContextProviders";
+import { CartContext, ModalContext } from "../../providers/ContextProviders";
 
 const ProductSection = () => {
   const [pieces, setPieces] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
   const { handleButtonClick } = useContext(CartContext);
+  const { handleModalState } = useContext(ModalContext);
   const { id } = useParams();
 
   const checkProduct = (element) => {
@@ -46,6 +47,13 @@ const ProductSection = () => {
 
   const removePiece = () => {
     if (pieces !== 0) setPieces(pieces - 1);
+  };
+
+  const handleClick = () => {
+    if (pieces !== 0) {
+      handleButtonClick(pieces, product);
+      handleModalState("Added to cart!");
+    }
   };
 
   const filteredArray = data.sneakers.filter(checkProduct);
@@ -75,12 +83,7 @@ const ProductSection = () => {
           <p>{pieces}</p>
           <RemoveSymbol onClick={removePiece} />
         </ButtonsWrapper>
-        <Button
-          onClick={() => {
-            handleButtonClick(pieces, product);
-          }}
-          content="Add to cart"
-        />
+        <Button onClick={handleClick} content="Add to cart" />
       </Wrapper>
     </>
   );
