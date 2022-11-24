@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import mq from "../../assets/styles/responsiveDesign";
 
 export const Wrapper = styled.div`
   padding: 1.5em 3em;
+  margin: auto;
+  max-width: 800px;
 `;
 
 export const SubmitButton = styled.input`
@@ -46,9 +49,18 @@ export const InputBlock = styled.div`
     padding: 0.2em 0.5em;
     font-size: 1.6rem;
     border: 2px solid ${({ theme }) => theme.colors.darkGrayishBlue};
+    background-color: ${({ theme }) => theme.colors.paleOrange};
   }
 
   span {
     color: ${({ theme }) => theme.colors.lightRed};
+  }
+
+  ${mq[2]} {
+    margin: 1em 0;
+
+    span {
+      font-size: 1.5rem;
+    }
   }
 `;

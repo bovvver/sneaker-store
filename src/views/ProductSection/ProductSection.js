@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Wrapper } from "./ProductSection.styles";
+import { Wrapper, SectionWrapper } from "./ProductSection.styles";
 import {
   ImageWrapper,
   BigImage,
@@ -60,7 +60,7 @@ const ProductSection = () => {
   const [product] = filteredArray;
 
   return (
-    <>
+    <SectionWrapper>
       <ImageWrapper>
         <BigImage
           src={product.photos[photoIndex]}
@@ -85,7 +85,7 @@ const ProductSection = () => {
         </ButtonsWrapper>
         <Button onClick={handleClick} content="Add to cart" />
       </Wrapper>
-    </>
+    </SectionWrapper>
   );
 };
 

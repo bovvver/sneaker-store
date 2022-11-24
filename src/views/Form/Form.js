@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ModalContext, CartContext } from "../../providers/ContextProviders";
 import { useNavigate } from "react-router-dom";
+import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
 const schema = yup
   .object({
@@ -66,66 +67,73 @@ const Form = () => {
   };
 
   return (
-    <Wrapper>
-      <SectionHeader title="Finish your order" />
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <InputBlock>
-          <input {...register("name")} type="text" placeholder="Name" />
-          {errors.name ? <span>{errors.name.message}</span> : null}
-        </InputBlock>
-        <InputBlock>
-          <input {...register("surname")} type="text" placeholder="Surname" />
-          {errors.surname ? <span>{errors.surname.message}</span> : null}
-        </InputBlock>
-        <InputBlock>
-          <input {...register("email")} type="text" placeholder="E-mail" />
-          {errors.email ? <span>{errors.email.message}</span> : null}
-        </InputBlock>
-        <InputBlock>
-          <input
-            {...register("phoneNumber")}
-            type="text"
-            placeholder="Phone number"
-          />
-          {errors.phoneNumber ? (
-            <span>{errors.phoneNumber.message}</span>
-          ) : null}
-        </InputBlock>
-        <InputBlock>
-          <input {...register("zipCode")} type="text" placeholder="Zip code" />
-          {errors.zipCode ? <span>{errors.zipCode.message}</span> : null}
-        </InputBlock>
-        <InputBlock>
-          <input {...register("city")} type="text" placeholder="City" />
-          {errors.city ? <span>{errors.city.message}</span> : null}
-        </InputBlock>
-        <InputBlock>
-          <input {...register("street")} type="text" placeholder="Street" />
-          {errors.street ? <span>{errors.street.message}</span> : null}
-        </InputBlock>
-        <InputBlock>
-          <input
-            {...register("houseNumber")}
-            type="text"
-            placeholder="House number"
-          />
-          {errors.houseNumber ? (
-            <span>{errors.houseNumber.message}</span>
-          ) : null}
-        </InputBlock>
-        <InputBlock>
-          <input
-            {...register("apartmentNumber")}
-            type="text"
-            placeholder="Apartment"
-          />
-          {errors.apartmentNumber ? (
-            <span>{errors.apartmentNumber.message}</span>
-          ) : null}
-        </InputBlock>
-        <SubmitButton type="submit" value="Order" />
-      </StyledForm>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <SectionHeader title="Finish your order" />
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
+          <InputBlock>
+            <input {...register("name")} type="text" placeholder="Name" />
+            {errors.name ? <span>{errors.name.message}</span> : null}
+          </InputBlock>
+          <InputBlock>
+            <input {...register("surname")} type="text" placeholder="Surname" />
+            {errors.surname ? <span>{errors.surname.message}</span> : null}
+          </InputBlock>
+          <InputBlock>
+            <input {...register("email")} type="text" placeholder="E-mail" />
+            {errors.email ? <span>{errors.email.message}</span> : null}
+          </InputBlock>
+          <InputBlock>
+            <input
+              {...register("phoneNumber")}
+              type="text"
+              placeholder="Phone number"
+            />
+            {errors.phoneNumber ? (
+              <span>{errors.phoneNumber.message}</span>
+            ) : null}
+          </InputBlock>
+          <InputBlock>
+            <input
+              {...register("zipCode")}
+              type="text"
+              placeholder="Zip code"
+            />
+            {errors.zipCode ? <span>{errors.zipCode.message}</span> : null}
+          </InputBlock>
+          <InputBlock>
+            <input {...register("city")} type="text" placeholder="City" />
+            {errors.city ? <span>{errors.city.message}</span> : null}
+          </InputBlock>
+          <InputBlock>
+            <input {...register("street")} type="text" placeholder="Street" />
+            {errors.street ? <span>{errors.street.message}</span> : null}
+          </InputBlock>
+          <InputBlock>
+            <input
+              {...register("houseNumber")}
+              type="text"
+              placeholder="House number"
+            />
+            {errors.houseNumber ? (
+              <span>{errors.houseNumber.message}</span>
+            ) : null}
+          </InputBlock>
+          <InputBlock>
+            <input
+              {...register("apartmentNumber")}
+              type="text"
+              placeholder="Apartment"
+            />
+            {errors.apartmentNumber ? (
+              <span>{errors.apartmentNumber.message}</span>
+            ) : null}
+          </InputBlock>
+          <SubmitButton type="submit" value="Order" />
+        </StyledForm>
+      </Wrapper>
+      <SvgWaves />
+    </>
   );
 };
 

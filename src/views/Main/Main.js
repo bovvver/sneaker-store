@@ -4,7 +4,8 @@ import { Wrapper } from "./Main.styles";
 import Product from "../../components/molecules/Product/Product";
 import data from "../../data/data";
 import { useParams } from "react-router-dom";
-import { CustomLink } from "./Main.styles";
+import { CustomLink, ProductsWrapper } from "./Main.styles";
+import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
 const Main = () => {
   let title;
@@ -24,20 +25,23 @@ const Main = () => {
   return (
     <Wrapper>
       <SectionHeader title={title} />
-      {details.map((el) => (
-        <CustomLink
-          key={el.id}
-          to={`/product/${el.producer}-${el.id.split("-")[0]}`}
-        >
-          <Product
-            image={el.photos[0]}
-            producer={el.producer}
-            name={el.name}
-            description={el.description}
-            price={el.price}
-          />
-        </CustomLink>
-      ))}
+      <ProductsWrapper>
+        {details.map((el) => (
+          <CustomLink
+            key={el.id}
+            to={`/product/${el.producer}-${el.id.split("-")[0]}`}
+          >
+            <Product
+              image={el.photos[0]}
+              producer={el.producer}
+              name={el.name}
+              description={el.description}
+              price={el.price}
+            />
+          </CustomLink>
+        ))}
+        <SvgWaves />
+      </ProductsWrapper>
     </Wrapper>
   );
 };

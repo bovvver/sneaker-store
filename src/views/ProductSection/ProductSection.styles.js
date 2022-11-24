@@ -1,7 +1,28 @@
 import styled from "styled-components";
+import mq from "../../assets/styles/responsiveDesign";
+
+export const SectionWrapper = styled.div`
+  margin: auto;
+  max-width: 1300px;
+
+  ${mq[2]} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+  }
+`;
 
 export const Wrapper = styled.div`
   padding: 1.5em 3em;
+
+  ${mq[2]} {
+    width: 50%;
+
+    h3 {
+      font-size: 5rem;
+    }
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -13,6 +34,10 @@ export const ImageWrapper = styled.div`
 
   button:last-of-type {
     right: 0.5em;
+  }
+
+  ${mq[2]} {
+    width: 50%;
   }
 `;
 
@@ -40,6 +65,15 @@ export const BigImage = styled.img`
   max-height: 30vh;
   object-fit: cover;
   background-color: orange;
+
+  ${mq[0]} {
+    max-height: 50vh;
+  }
+
+  ${mq[2]} {
+    max-height: 70vh;
+    border-radius: 25px;
+  }
 `;
 
 export const ButtonsWrapper = styled.div`

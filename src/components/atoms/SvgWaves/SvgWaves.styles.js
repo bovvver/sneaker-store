@@ -6,7 +6,7 @@ export const Waves = styled.div`
   bottom: 0;
   background-image: url(${Background});
   aspect-ratio: 540/960;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
