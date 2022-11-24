@@ -12,12 +12,20 @@ import { CartContext } from "../../../providers/ContextProviders";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { state, cart } = useContext(CartContext);
+  const { state, cart, handleCartClick } = useContext(CartContext);
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/summary");
+    handleCartClick();
+  };
 
   return (
     <Wrapper
-      style={!state ? { opacity: "0", pointerEvents: "none" } : { opacity: "1" }}>
+      style={
+        !state ? { opacity: "0", pointerEvents: "none" } : { opacity: "1" }
+      }
+    >
       <CartHeader>Cart</CartHeader>
       <CartProducts>
         {cart.length === 0 ? (
@@ -35,7 +43,7 @@ const Cart = () => {
                 fullPrice={el.pieces * +el.item.price}
               />
             ))}
-            <Button onClick={() => navigate("/summary")} content="Checkout" />
+            <Button onClick={handleClick} content="Checkout" />
           </ItemsWrapper>
         )}
       </CartProducts>

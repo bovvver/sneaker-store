@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../assets/styles/fonts.css";
 import { ThemeProvider } from "styled-components";
 import theme from "../../assets/styles/theme";
@@ -7,33 +7,34 @@ import MobileNavigation from "../../components/organisms/MobileNavigation/Mobile
 import Main from "../Main/Main";
 import About from "../About/About";
 import ExtendedNav from "../../components/molecules/ExtendedNav/ExtendedNav";
-import ContextProviders from "../../providers/ContextProviders";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductSection from "../ProductSection/ProductSection";
 import Cart from "../../components/molecules/Cart/Cart";
 import Summary from "../Summary/Summary";
 import Form from "../Form/Form";
 import Modal from "../../components/atoms/Modal/Modal";
+import { ScreenSizeContext } from "../../providers/ContextProviders";
+import DesktopNavigation from "../../components/organisms/DesktopNavigation/DesktopNavigation";
 
 const Root = () => {
+  const { screenWidth } = useContext(ScreenSizeContext);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <ContextProviders>
-          <GlobalStyle />
-          <MobileNavigation />
-          <ExtendedNav />
-          <Cart />
-          <Modal />
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/collection/:id" element={<Main />} />
-            <Route path="/product/:id" element={<ProductSection />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/summary" element={<Summary />} />
-            <Route path="/finish-page" element={<Form />} />
-          </Routes>
-        </ContextProviders>
+        <GlobalStyle />
+        {screenWidth >= 768 ? <DesktopNavigation /> : <MobileNavigation />}
+        {screenWidth <= 768 ? <ExtendedNav /> : null}
+        <Cart />
+        <Modal />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/collection/:id" element={<Main />} />
+          <Route path="/product/:id" element={<ProductSection />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/summary" element={<Summary />} />
+          <Route path="/finish-page" element={<Form />} />
+        </Routes>
       </ThemeProvider>
     </Router>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import mq from "../../../assets/styles/responsiveDesign";
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -11,6 +12,16 @@ export const Wrapper = styled.div`
   opacity: 0;
   z-index: 50;
   transition: opacity 0.2s;
+
+  ${mq[1]} {
+    left: 20%;
+    right: 20%;
+  }
+
+  ${mq[2]} {
+    left: 30%;
+    right: 30%;
+  }
 `;
 
 export const CartHeader = styled.p`

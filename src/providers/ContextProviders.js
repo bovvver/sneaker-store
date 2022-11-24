@@ -1,5 +1,10 @@
 import React, { createContext, useState } from "react";
 
+export const ScreenSizeContext = createContext({
+  screenWidth: 0,
+  handleWidthChange: () => {},
+});
+
 export const NavContext = createContext({
   state: false,
   handleNavClick: () => {},
@@ -21,11 +26,18 @@ export const ModalContext = createContext({
 });
 
 const ContextProviders = ({ children }) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [open, setOpen] = useState(false);
   const [opacity, setOpacity] = useState(false);
   const [cart, setCart] = useState([]);
   const [modalState, setModalState] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+
+  const handleWidthChange = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  window.addEventListener("resize", handleWidthChange);
 
   const handleNavClick = () => {
     setOpen(!open);
@@ -69,29 +81,31 @@ const ContextProviders = ({ children }) => {
   };
 
   return (
-    <NavContext.Provider value={{ state: open, handleNavClick }}>
-      <CartContext.Provider
-        value={{
-          state: opacity,
-          handleCartClick,
-          cart,
-          handleButtonClick,
-          deleteItem,
-          clearCart,
-        }}
-      >
-        <ModalContext.Provider
+    <ScreenSizeContext.Provider value={{ screenWidth, handleWidthChange }}>
+      <NavContext.Provider value={{ state: open, handleNavClick }}>
+        <CartContext.Provider
           value={{
-            modalState,
-            handleModalState,
-            modalMessage,
-            setModalMessage,
+            state: opacity,
+            handleCartClick,
+            cart,
+            handleButtonClick,
+            deleteItem,
+            clearCart,
           }}
         >
-          {children}
-        </ModalContext.Provider>
-      </CartContext.Provider>
-    </NavContext.Provider>
+          <ModalContext.Provider
+            value={{
+              modalState,
+              handleModalState,
+              modalMessage,
+              setModalMessage,
+            }}
+          >
+            {children}
+          </ModalContext.Provider>
+        </CartContext.Provider>
+      </NavContext.Provider>
+    </ScreenSizeContext.Provider>
   );
 };
 
