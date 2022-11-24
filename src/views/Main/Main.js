@@ -23,26 +23,28 @@ const Main = () => {
   }
 
   return (
-    <Wrapper>
-      <SectionHeader title={title} />
-      <ProductsWrapper>
-        {details.map((el) => (
-          <CustomLink
-            key={el.id}
-            to={`/product/${el.producer}-${el.id.split("-")[0]}`}
-          >
-            <Product
-              image={el.photos[0]}
-              producer={el.producer}
-              name={el.name}
-              description={el.description}
-              price={el.price}
-            />
-          </CustomLink>
-        ))}
-        <SvgWaves />
-      </ProductsWrapper>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <SectionHeader title={title} />
+        <ProductsWrapper>
+          {details.map((el) => (
+            <CustomLink
+              key={el.id}
+              to={`/product/${el.producer}-${el.id.split("-")[0]}`}
+            >
+              <Product
+                image={el.photos[0]}
+                producer={el.producer}
+                name={el.name}
+                description={el.description}
+                price={el.price}
+              />
+            </CustomLink>
+          ))}
+        </ProductsWrapper>
+      </Wrapper>
+      <SvgWaves />
+    </>
   );
 };
 
