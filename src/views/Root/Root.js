@@ -15,6 +15,7 @@ import Form from "../Form/Form";
 import Modal from "../../components/atoms/Modal/Modal";
 import { ScreenSizeContext } from "../../providers/ContextProviders";
 import DesktopNavigation from "../../components/organisms/DesktopNavigation/DesktopNavigation";
+import NotFound from "../NotFound/NotFound";
 
 const Root = () => {
   const { screenWidth } = useContext(ScreenSizeContext);
@@ -34,6 +35,7 @@ const Root = () => {
           <Route path="/about" element={<About />} />
           <Route path="/summary" element={<Summary />} />
           <Route path="/finish-page" element={<Form />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>
     </Router>
