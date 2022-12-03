@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ModalContext, CartContext } from "../../providers/ContextProviders";
+import { Modals } from "../../providers/ModalContext";
+import { CartCtx } from "../../providers/CartConext";
 import { useNavigate } from "react-router-dom";
 import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
@@ -51,8 +52,8 @@ const schema = yup
   .required();
 
 const Form = () => {
-  const { handleModalState } = useContext(ModalContext);
-  const { clearCart } = useContext(CartContext);
+  const { handleModalState } = useContext(Modals);
+  const { clearCart } = useContext(CartCtx);
   const navigate = useNavigate();
 
   const {

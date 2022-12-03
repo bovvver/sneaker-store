@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Bars } from "./NavBars.styles";
-import { NavContext } from "../../../providers/ContextProviders";
+import { Nav } from "../../../providers/NavContext";
 
 const NavBars = () => {
-  const { state, handleNavClick } = useContext(NavContext);
+  const { state, handleNavClick } = useContext(Nav);
   return (
     <Bars
       width="16"

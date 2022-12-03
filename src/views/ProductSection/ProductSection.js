@@ -17,13 +17,14 @@ import data from "../../data/data";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
 import Button from "../../components/atoms/Button/Button";
-import { CartContext, ModalContext } from "../../providers/ContextProviders";
+import { CartCtx } from "../../providers/CartConext";
+import { Modals } from "../../providers/ModalContext";
 
 const ProductSection = () => {
   const [pieces, setPieces] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const { handleButtonClick } = useContext(CartContext);
-  const { handleModalState } = useContext(ModalContext);
+  const { handleButtonClick } = useContext(CartCtx);
+  const { handleModalState } = useContext(Modals);
   const { id } = useParams();
 
   const checkProduct = (element) => {

@@ -7,9 +7,3 @@ export const Wrapper = styled.div`
   justify-content: flex-end;
   width: 40%;
 `;
-
-export const ProfileButton = styled.img`
-  margin-left: 2em;
-  width: 3em;
-  height: 3em;
-`;

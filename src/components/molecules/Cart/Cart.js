@@ -8,11 +8,11 @@ import {
   EmptyCart,
 } from "./Cart.styles";
 import CartItem from "../CartItem/CartItem";
-import { CartContext } from "../../../providers/ContextProviders";
+import { CartCtx } from "../../../providers/CartConext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { state, cart, handleCartClick } = useContext(CartContext);
+  const { state, cart, handleCartClick } = useContext(CartCtx);
   const navigate = useNavigate();
 
   const handleClick = () => {

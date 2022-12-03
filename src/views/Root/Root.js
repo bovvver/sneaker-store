@@ -13,12 +13,12 @@ import Cart from "../../components/molecules/Cart/Cart";
 import Summary from "../Summary/Summary";
 import Form from "../Form/Form";
 import Modal from "../../components/atoms/Modal/Modal";
-import { ScreenSizeContext } from "../../providers/ContextProviders";
+import { ScreenSize } from "../../providers/ScreenSizeContext";
 import DesktopNavigation from "../../components/organisms/DesktopNavigation/DesktopNavigation";
 import NotFound from "../NotFound/NotFound";
 
 const Root = () => {
-  const { screenWidth } = useContext(ScreenSizeContext);
+  const { screenWidth } = useContext(ScreenSize);
 
   return (
     <Router>

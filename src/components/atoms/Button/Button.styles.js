@@ -11,4 +11,9 @@ export const StyledButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 0 10px 2px rgba(255, 145, 24, 1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 `;
