@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Wrapper, ItemImg, ItemText } from "./CartItem.styles";
 import DeleteIcon from "../../atoms/DeleteIcon/DeleteIcon";
-import { CartContext } from "../../../providers/ContextProviders";
+import { CartCtx } from "../../../providers/CartConext";
 
 const CartItem = ({ id, img, name, price, pieces, fullPrice }) => {
-  const { deleteItem } = useContext(CartContext);
+  const { deleteItem } = useContext(CartCtx);
 
   return (
     <Wrapper>

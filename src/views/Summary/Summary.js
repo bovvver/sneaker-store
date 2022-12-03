@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { Wrapper, TotalPrice } from "./Summary.styles";
 import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
-import { CartContext } from "../../providers/ContextProviders";
+import { CartCtx } from "../../providers/CartConext";
 import CartItem from "../../components/molecules/CartItem/CartItem";
 import Button from "../../components/atoms/Button/Button";
 import { useNavigate } from "react-router-dom";
 import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
 const Summary = () => {
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(CartCtx);
   const navigate = useNavigate();
   let countPrice = 0;
 

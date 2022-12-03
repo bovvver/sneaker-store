@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Wrapper } from "./NavBtns.styles";
 import CartImg from "../../atoms/CartImg/CartImg";
-import { CartContext } from "../../../providers/ContextProviders";
+import { CartCtx } from "../../../providers/CartConext";
 
 const NavBtns = () => {
-  const { handleCartClick } = useContext(CartContext);
+  const { handleCartClick } = useContext(CartCtx);
 
   return (
     <Wrapper>

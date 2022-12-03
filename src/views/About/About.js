@@ -9,10 +9,10 @@ import {
 import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
 import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 import data from "../../data/data";
-import { ScreenSizeContext } from "../../providers/ContextProviders";
+import { ScreenSize } from "../../providers/ScreenSizeContext";
 
 const About = () => {
-  const { screenWidth } = useContext(ScreenSizeContext);
+  const { screenWidth } = useContext(ScreenSize);
 
   const photoSrc = data.sneakers[2].largePhotos[0];
 

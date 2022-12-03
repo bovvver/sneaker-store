@@ -1,111 +1,18 @@
-import React, { createContext, useState } from "react";
-
-export const ScreenSizeContext = createContext({
-  screenWidth: 0,
-  handleWidthChange: () => {},
-});
-
-export const NavContext = createContext({
-  state: false,
-  handleNavClick: () => {},
-});
-
-export const CartContext = createContext({
-  opacity: false,
-  handleCartClick: () => {},
-  cart: [],
-  handleButtonClick: () => {},
-  deleteItem: () => {},
-  clearCart: () => {},
-});
-
-export const ModalContext = createContext({
-  modalState: false,
-  handleModalState: () => {},
-  modalMessage: "",
-});
+import React from "react";
+import CartConext from "./CartConext";
+import ModalContext from "./ModalContext";
+import NavContext from "./NavContext";
+import ScreenSizeContext from "./ScreenSizeContext";
 
 const ContextProviders = ({ children }) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [open, setOpen] = useState(false);
-  const [opacity, setOpacity] = useState(false);
-  const [cart, setCart] = useState([]);
-  const [modalState, setModalState] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
-
-  const handleWidthChange = () => {
-    setScreenWidth(window.innerWidth);
-  };
-
-  window.addEventListener("resize", handleWidthChange);
-
-  const handleNavClick = () => {
-    setOpen(!open);
-  };
-
-  const handleCartClick = () => {
-    setOpacity(!opacity);
-  };
-
-  const handleButtonClick = (pieces, item) => {
-    const [checkItem] = cart.filter((el) => el.item.id === item.id);
-
-    if (pieces !== 0) {
-      if (checkItem) {
-        const cartCopy = [...cart];
-        cartCopy.forEach((el) => {
-          if (el.item.id === checkItem.item.id) {
-            el.pieces += pieces;
-          }
-          setCart(cartCopy);
-        });
-      } else {
-        setCart((oldCart) => [...oldCart, { pieces, item }]);
-      }
-    }
-  };
-
-  const deleteItem = (id) => {
-    const cartCopy = cart.filter((el) => el.item.id !== id);
-    setCart(cartCopy);
-  };
-
-  const clearCart = () => setCart([]);
-
-  const handleModalState = (message) => {
-    setModalMessage(message);
-    setModalState(true);
-    setTimeout(() => {
-      setModalState(false);
-    }, 5000);
-  };
-
   return (
-    <ScreenSizeContext.Provider value={{ screenWidth, handleWidthChange }}>
-      <NavContext.Provider value={{ state: open, handleNavClick }}>
-        <CartContext.Provider
-          value={{
-            state: opacity,
-            handleCartClick,
-            cart,
-            handleButtonClick,
-            deleteItem,
-            clearCart,
-          }}
-        >
-          <ModalContext.Provider
-            value={{
-              modalState,
-              handleModalState,
-              modalMessage,
-              setModalMessage,
-            }}
-          >
-            {children}
-          </ModalContext.Provider>
-        </CartContext.Provider>
-      </NavContext.Provider>
-    </ScreenSizeContext.Provider>
+    <ScreenSizeContext>
+      <NavContext>
+        <CartConext>
+          <ModalContext>{children}</ModalContext>
+        </CartConext>
+      </NavContext>
+    </ScreenSizeContext>
   );
 };
 
