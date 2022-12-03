@@ -46,10 +46,12 @@ export const InputBlock = styled.div`
 
   input[type="text"] {
     width: 100%;
-    padding: 0.2em 0.5em;
+    padding: 0.3em 0.6em;
     font-size: 1.6rem;
-    border: 2px solid ${({ theme }) => theme.colors.darkGrayishBlue};
-    background-color: ${({ theme }) => theme.colors.paleOrange};
+    border: 2px solid ${({ theme }) => theme.colors.orange};
+    background-color: ${({ theme }) => theme.colors.white};
+    box-shadow: 2px 2px 10px 0px ${({ theme }) => theme.colors.shadow};
+    border-radius: 6px;
   }
 
   span {
