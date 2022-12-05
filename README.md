@@ -1,4 +1,5 @@
 
+
 <div  align="center">
 <a  href="https://github.com/MemeeMaster/sneaker-store">
 <img  src="/public/logo.png"  alt="Logo"  width="80"  height="80">
@@ -31,6 +32,12 @@ Using the application is very simple. Just behave like on any internet store.
 - go to cart and click 'Checkout',
 - go forward and finish your order.
 > :warning: **Disclaimer**: Remember that this is educational project. I'm so sorry, but I won't send you any product :grin:
+
+## Features to do in future
+- connect to real database or API,
+- add tests,
+- refactor some code,
+- beautify the site with additional animations.
 
 ## Credits
 Packages used to complete this project:
