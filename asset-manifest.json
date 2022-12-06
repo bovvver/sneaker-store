@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sneaker-store/static/css/main.ad7c8d23.css",
-    "main.js": "/sneaker-store/static/js/main.c8976a8c.js",
+    "main.js": "/sneaker-store/static/js/main.6b02c4f1.js",
     "static/media/vans2small.jpg": "/sneaker-store/static/media/vans2small.63531737cd708cc19f7f.jpg",
     "static/media/vans3small.jpg": "/sneaker-store/static/media/vans3small.51e9f1dca0360d4a0920.jpg",
     "static/media/vans1small.jpg": "/sneaker-store/static/media/vans1small.5d588676f20073a53d2d.jpg",
@@ -19,10 +19,10 @@
     "static/media/fila1small.jpg": "/sneaker-store/static/media/fila1small.d6dedd6219e46e986695.jpg",
     "static/media/layered-waves-haikei.svg": "/sneaker-store/static/media/layered-waves-haikei.7137d5a5cda9fac70bf241c402a8ed53.svg",
     "index.html": "/sneaker-store/index.html",
-    "main.c8976a8c.js.map": "/sneaker-store/static/js/main.c8976a8c.js.map"
+    "main.6b02c4f1.js.map": "/sneaker-store/static/js/main.6b02c4f1.js.map"
   },
   "entrypoints": [
     "static/css/main.ad7c8d23.css",
-    "static/js/main.c8976a8c.js"
+    "static/js/main.6b02c4f1.js"
   ]
 }
