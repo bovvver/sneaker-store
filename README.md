@@ -7,7 +7,7 @@
 <h2>sneaker-store 👟</h2>
 <p>
 Simple <strong>educational</strong> project imitating real sneaker store.<br/>
-<a href="https://memeemaster.github.io/sneaker-store/">Live page</a>
+<a href="https://memeemaster.github.io/sneaker-store/" target="_blank">Live page</a>
 </div>
 
 ## Installation
