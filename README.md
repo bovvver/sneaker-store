@@ -6,7 +6,8 @@
 </a>
 <h2>sneaker-store 👟</h2>
 <p>
-Simple <strong>educational</strong> project imitating real sneaker store.
+Simple <strong>educational</strong> project imitating real sneaker store.<br/>
+<a href="https://memeemaster.github.io/sneaker-store/">Live page</a>
 </div>
 
 ## Installation
