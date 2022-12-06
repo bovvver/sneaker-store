@@ -14,7 +14,7 @@ import { ScreenSize } from "../../providers/ScreenSizeContext";
 const About = () => {
   const { screenWidth } = useContext(ScreenSize);
 
-  const photoSrc = data.sneakers[2].largePhotos[0];
+  const photoSrc = data.sneakers[3].photos[2];
 
   return (
     <>
