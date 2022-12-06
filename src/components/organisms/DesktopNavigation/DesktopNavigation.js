@@ -8,10 +8,10 @@ const DesktopNavigation = () => {
     <Wrapper>
       <SiteTitle />
       <NavBlock>
-        <StyledNavLink to="/">Main page</StyledNavLink>
-        <StyledNavLink to="/collection/men">Men</StyledNavLink>
-        <StyledNavLink to="/collection/women">Women</StyledNavLink>
-        <StyledNavLink to="/about">About Us</StyledNavLink>
+        <StyledNavLink to="/sneaker-store/" exact={true} end>Main page</StyledNavLink>
+        <StyledNavLink to="/sneaker-store/collection/men">Men</StyledNavLink>
+        <StyledNavLink to="/sneaker-store/collection/women">Women</StyledNavLink>
+        <StyledNavLink to="/sneaker-store/about">About Us</StyledNavLink>
       </NavBlock>
       <NavBtns />
     </Wrapper>

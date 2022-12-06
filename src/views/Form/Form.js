@@ -62,7 +62,7 @@ const Form = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = () => {
-    navigate("/");
+    navigate("/sneaker-store/");
     clearCart();
     handleModalState("Order successful!");
   };

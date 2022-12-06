@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.ad7c8d23.css",
-    "main.js": "/static/js/main.67c62b46.js",
-    "static/media/vans2small.jpg": "/static/media/vans2small.63531737cd708cc19f7f.jpg",
-    "static/media/vans3small.jpg": "/static/media/vans3small.51e9f1dca0360d4a0920.jpg",
-    "static/media/vans1small.jpg": "/static/media/vans1small.5d588676f20073a53d2d.jpg",
-    "static/media/yeezy2small.jpg": "/static/media/yeezy2small.87d4b78dadb59c31efba.jpg",
-    "static/media/yeezy3small.jpg": "/static/media/yeezy3small.e8f21d37ad5924ba6f7f.jpg",
-    "static/media/fila2small.jpg": "/static/media/fila2small.353cdd6eb6ad75ac2914.jpg",
-    "static/media/force1small.jpg": "/static/media/force1small.d2c49ffe08c33ed137c0.jpg",
-    "static/media/force3small.jpg": "/static/media/force3small.0758f70bd9d1ff1f5879.jpg",
-    "static/media/force2small.jpg": "/static/media/force2small.04af453d5ba9a2d1c68b.jpg",
-    "static/media/jordan1small.jpg": "/static/media/jordan1small.37c311fac4c0f4f2b2d5.jpg",
-    "static/media/jordan3small.jpg": "/static/media/jordan3small.78280975eaab567d666d.jpg",
-    "static/media/fila3small.jpg": "/static/media/fila3small.838da10dfc2991d532ed.jpg",
-    "static/media/jordan2small.jpg": "/static/media/jordan2small.6f0c9caae8f1312af2dd.jpg",
-    "static/media/yeezy1small.jpg": "/static/media/yeezy1small.2178a8f9c7a7e054d6d8.jpg",
-    "static/media/fila1small.jpg": "/static/media/fila1small.d6dedd6219e46e986695.jpg",
-    "static/media/layered-waves-haikei.svg": "/static/media/layered-waves-haikei.7137d5a5cda9fac70bf241c402a8ed53.svg",
-    "index.html": "/index.html",
-    "main.67c62b46.js.map": "/static/js/main.67c62b46.js.map"
+    "main.css": "/sneaker-store/static/css/main.ad7c8d23.css",
+    "main.js": "/sneaker-store/static/js/main.6290981e.js",
+    "static/media/vans2small.jpg": "/sneaker-store/static/media/vans2small.63531737cd708cc19f7f.jpg",
+    "static/media/vans3small.jpg": "/sneaker-store/static/media/vans3small.51e9f1dca0360d4a0920.jpg",
+    "static/media/vans1small.jpg": "/sneaker-store/static/media/vans1small.5d588676f20073a53d2d.jpg",
+    "static/media/yeezy2small.jpg": "/sneaker-store/static/media/yeezy2small.87d4b78dadb59c31efba.jpg",
+    "static/media/yeezy3small.jpg": "/sneaker-store/static/media/yeezy3small.e8f21d37ad5924ba6f7f.jpg",
+    "static/media/fila2small.jpg": "/sneaker-store/static/media/fila2small.353cdd6eb6ad75ac2914.jpg",
+    "static/media/force1small.jpg": "/sneaker-store/static/media/force1small.d2c49ffe08c33ed137c0.jpg",
+    "static/media/force3small.jpg": "/sneaker-store/static/media/force3small.0758f70bd9d1ff1f5879.jpg",
+    "static/media/force2small.jpg": "/sneaker-store/static/media/force2small.04af453d5ba9a2d1c68b.jpg",
+    "static/media/jordan1small.jpg": "/sneaker-store/static/media/jordan1small.37c311fac4c0f4f2b2d5.jpg",
+    "static/media/jordan3small.jpg": "/sneaker-store/static/media/jordan3small.78280975eaab567d666d.jpg",
+    "static/media/fila3small.jpg": "/sneaker-store/static/media/fila3small.838da10dfc2991d532ed.jpg",
+    "static/media/jordan2small.jpg": "/sneaker-store/static/media/jordan2small.6f0c9caae8f1312af2dd.jpg",
+    "static/media/yeezy1small.jpg": "/sneaker-store/static/media/yeezy1small.2178a8f9c7a7e054d6d8.jpg",
+    "static/media/fila1small.jpg": "/sneaker-store/static/media/fila1small.d6dedd6219e46e986695.jpg",
+    "static/media/layered-waves-haikei.svg": "/sneaker-store/static/media/layered-waves-haikei.7137d5a5cda9fac70bf241c402a8ed53.svg",
+    "index.html": "/sneaker-store/index.html",
+    "main.6290981e.js.map": "/sneaker-store/static/js/main.6290981e.js.map"
   },
   "entrypoints": [
     "static/css/main.ad7c8d23.css",
-    "static/js/main.67c62b46.js"
+    "static/js/main.6290981e.js"
   ]
 }

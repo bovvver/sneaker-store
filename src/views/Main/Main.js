@@ -30,7 +30,7 @@ const Main = () => {
           {details.map((el) => (
             <CustomLink
               key={el.id}
-              to={`/product/${el.producer}-${el.id.split("-")[0]}`}
+              to={`/sneaker-store/product/${el.producer}-${el.id.split("-")[0]}`}
             >
               <Product
                 image={el.photos[0]}

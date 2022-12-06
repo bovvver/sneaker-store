@@ -13,7 +13,7 @@ const Summary = () => {
   let countPrice = 0;
 
   const handleClick = () => {
-    navigate("/finish-page");
+    navigate("/sneaker-store/finish-page");
   };
 
   cart.map((el) => (countPrice += +el.item.price * el.pieces));

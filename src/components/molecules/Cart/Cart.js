@@ -16,7 +16,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/summary");
+    navigate("/sneaker-store/summary");
     handleCartClick();
   };
 

@@ -14,16 +14,16 @@ const ExtendedNav = () => {
     <Wrapper style={navStyles}>
       <CloseButton />
       <Links>
-        <StyledLink to="/" onClick={handleNavClick}>
+        <StyledLink to="/sneaker-store/" exact={true} onClick={handleNavClick} end>
           Main page
         </StyledLink>
-        <StyledLink to="/collection/men" onClick={handleNavClick}>
+        <StyledLink to="/sneaker-store/collection/men" onClick={handleNavClick}>
           Men
         </StyledLink>
-        <StyledLink to="/collection/women" onClick={handleNavClick}>
+        <StyledLink to="/sneaker-store/collection/women" onClick={handleNavClick}>
           Women
         </StyledLink>
-        <StyledLink to="/about" onClick={handleNavClick}>
+        <StyledLink to="/sneaker-store/about" onClick={handleNavClick}>
           About Us
         </StyledLink>
       </Links>
