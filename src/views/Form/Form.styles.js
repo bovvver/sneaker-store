@@ -26,20 +26,21 @@ export const StyledForm = styled.form`
   flex-direction: row;
   flex-wrap: wrap;
 
-  div:nth-of-type(3),
-  div:nth-of-type(4),
-  div:nth-of-type(7) {
-    width: 100%;
-
-    input[type="text"] {
-      width: 100%;
+  ${mq[1]} {
+    div:nth-of-type(3),
+    div:nth-of-type(4),
+    div:nth-of-type(5),
+    div:nth-of-type(6),
+    div:nth-of-type(8),
+    div:nth-of-type(9) {
+      width: 50%;
     }
   }
 `;
 
 export const InputBlock = styled.div`
-  width: 50%;
-  margin: 0.3em 0;
+  width: 100%;
+  margin: 0 0 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,19 +48,24 @@ export const InputBlock = styled.div`
   input[type="text"] {
     width: 100%;
     padding: 0.3em 0.6em;
-    font-size: 1.6rem;
-    border: 2px solid ${({ theme }) => theme.colors.orange};
+    font-size: 2rem;
+    border: 3px solid ${({ theme }) => theme.colors.white};
+    border-bottom: 3px solid ${({ theme }) => theme.colors.orange};
     background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: 2px 2px 10px 0px ${({ theme }) => theme.colors.shadow};
-    border-radius: 6px;
+    box-shadow: 1px 1px 3px 0px ${({ theme }) => theme.colors.shadow};
+    border-radius: 10px;
+
+    &:focus {
+      border: 3px solid ${({ theme }) => theme.colors.orange};
+    }
   }
 
   span {
     color: ${({ theme }) => theme.colors.lightRed};
   }
 
-  ${mq[2]} {
-    margin: 1em 0;
+  ${mq[1]} {
+    margin: 1em 0 1em;
 
     span {
       font-size: 1.5rem;

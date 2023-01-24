@@ -130,7 +130,7 @@ const Form = () => {
               <span>{errors.apartmentNumber.message}</span>
             ) : null}
           </InputBlock>
-          <SubmitButton type="submit" value="Order" />
+          <SubmitButton data-testid="btn" type="submit" value="Order" />
         </StyledForm>
       </Wrapper>
       <SvgWaves />
