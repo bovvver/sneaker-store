@@ -31,7 +31,10 @@ const Root = () => {
         <Routes>
           <Route path="/sneaker-store/" element={<Main />} />
           <Route path="/sneaker-store/collection/:id" element={<Main />} />
-          <Route path="/sneaker-store/product/:id" element={<ProductSection />} />
+          <Route
+            path="/sneaker-store/product/:id"
+            element={<ProductSection />}
+          />
           <Route path="/sneaker-store/about" element={<About />} />
           <Route path="/sneaker-store/summary" element={<Summary />} />
           <Route path="/sneaker-store/finish-page" element={<Form />} />

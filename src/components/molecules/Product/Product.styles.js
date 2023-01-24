@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   margin: 2em 0;
   box-shadow: 8px 8px 24px 0px ${({ theme }) => theme.colors.shadow};
   background-color: ${({ theme }) => theme.colors.white};
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.3s;
