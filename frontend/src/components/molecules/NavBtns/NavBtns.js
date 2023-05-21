@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Wrapper } from "./NavBtns.styles";
 import CartImg from "../../atoms/CartImg/CartImg";
-import { CartCtx } from "../../../providers/CartConext";
+import { useCart } from "../../../providers/CartConext";
+import { useAuth } from "../../../providers/AuthContext";
 
 const NavBtns = () => {
-  const { handleCartClick } = useContext(CartCtx);
+  const { handleCartClick } = useCart();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Wrapper>
-      <CartImg onClick={handleCartClick} />
+      {isAuthenticated ? <CartImg onClick={handleCartClick} /> : null}
     </Wrapper>
   );
 };

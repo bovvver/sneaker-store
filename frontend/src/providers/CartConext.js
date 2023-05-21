@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export const CartCtx = createContext({
   opacity: false,
@@ -8,6 +8,8 @@ export const CartCtx = createContext({
   deleteItem: () => {},
   clearCart: () => {},
 });
+
+export const useCart = () => useContext(CartCtx);
 
 const CartConext = ({ children }) => {
   const [opacity, setOpacity] = useState(false);

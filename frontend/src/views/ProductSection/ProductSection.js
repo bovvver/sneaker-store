@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Wrapper, SectionWrapper } from "./ProductSection.styles";
 import {
   ImageWrapper,
@@ -12,20 +12,23 @@ import Description from "../../components/atoms/Description/Description";
 import Price from "../../components/atoms/Price/Price";
 import AddSymbol from "../../components/atoms/AddSymbol/AddSymbol";
 import RemoveSymbol from "../../components/atoms/RemoveSymbol/RemoveSymbol";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import data from "../../data/data";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
 import Button from "../../components/atoms/Button/Button";
-import { CartCtx } from "../../providers/CartConext";
-import { Modals } from "../../providers/ModalContext";
+import { useCart } from "../../providers/CartConext";
+import { useAuth } from "../../providers/AuthContext";
+import { useModal } from "../../providers/ModalContext";
 
 const ProductSection = () => {
   const [pieces, setPieces] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const { handleButtonClick } = useContext(CartCtx);
-  const { handleModalState } = useContext(Modals);
+  const { handleButtonClick } = useCart();
+  const { handleModalState } = useModal();
+  const { isAuthenticated } = useAuth();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const checkProduct = (element) => {
     const checkFormula = `${element.producer}-${element.id.split("-")[0]}`;
@@ -53,7 +56,7 @@ const ProductSection = () => {
   const handleClick = () => {
     if (pieces !== 0) {
       handleButtonClick(pieces, product);
-      handleModalState("Added to cart!");
+      handleModalState("Added to cart");
     }
   };
 
@@ -84,7 +87,16 @@ const ProductSection = () => {
           <p>{pieces}</p>
           <RemoveSymbol onClick={removePiece} />
         </ButtonsWrapper>
-        <Button onClick={handleClick} content="Add to cart" />
+        <Button
+          onClick={
+            isAuthenticated
+              ? handleClick
+              : () => {
+                  navigate("/sneaker-store/login");
+                }
+          }
+          content="Add to cart"
+        />
       </Wrapper>
     </SectionWrapper>
   );

@@ -1,6 +1,7 @@
 const theme = {
   colors: {
     orange: "hsl(26, 100%, 55%)",
+    lightOrange: "hsl(25.8, 100%, 60.4%)",
     paleOrange: "hsl(25, 100%, 94%)",
     white: "hsl(0, 0%, 100%)",
     black: "hsl(0, 0%, 0%)",

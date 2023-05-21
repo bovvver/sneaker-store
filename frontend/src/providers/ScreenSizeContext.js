@@ -1,9 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export const ScreenSize = createContext({
   screenWidth: 0,
   handleWidthChange: () => {},
 });
+
+export const useSize = () => useContext(ScreenSize);
 
 const ScreenSizeContext = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);

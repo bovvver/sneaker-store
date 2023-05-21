@@ -8,8 +8,8 @@ export const Wrapper = styled.div`
 `;
 
 export const SubmitButton = styled.input`
-  width: 95%;
-  margin: 1.2em 2.5%;
+  width: 60%;
+  margin: 1.2em auto;
   padding: 0.7em 0;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.white};
@@ -25,17 +25,6 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  ${mq[1]} {
-    div:nth-of-type(3),
-    div:nth-of-type(4),
-    div:nth-of-type(5),
-    div:nth-of-type(6),
-    div:nth-of-type(8),
-    div:nth-of-type(9) {
-      width: 50%;
-    }
-  }
 `;
 
 export const InputBlock = styled.div`
@@ -46,21 +35,18 @@ export const InputBlock = styled.div`
   align-items: center;
 
   input[type="text"] {
-    width: 100%;
+    width: 60%;
     padding: 0.3em 0.6em;
     font-size: 2rem;
-    border: 3px solid ${({ theme }) => theme.colors.white};
-    border-bottom: 3px solid ${({ theme }) => theme.colors.orange};
-    background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: 1px 1px 3px 0px ${({ theme }) => theme.colors.shadow};
-    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
 
     &:focus {
-      border: 3px solid ${({ theme }) => theme.colors.orange};
+      outline: 1px solid ${({ theme }) => theme.colors.orange};
     }
   }
 
   span {
+    height: 10px;
     color: ${({ theme }) => theme.colors.lightRed};
   }
 

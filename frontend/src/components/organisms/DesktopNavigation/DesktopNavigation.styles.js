@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { NavLink, Link } from "react-router-dom";
 import mq from "../../../assets/styles/responsiveDesign";
 
 export const Wrapper = styled.div`
@@ -29,33 +29,30 @@ export const NavBlock = styled.div`
 
 const activeclassname = "active";
 
-export const StyledNavLink = styled(NavLink).attrs({ activeclassname })`
+const LinkStyles = css`
   position: relative;
-  padding: 0 0 0.5em;
   margin: 0 1em;
   color: ${({ theme }) => theme.colors.black};
   text-decoration: none;
   font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.1s, color 0.3s;
 
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 3px;
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.orange};
-    opacity: 0;
-    border-radius: 30px;
-    transition: opacity 0.3s;
+  &:hover {
+    transform: scale(1.1);
+    color: ${({ theme }) => theme.colors.orange};
   }
+`;
 
-  &:hover::before {
-    opacity: 1;
-  }
+export const StyledNavLink = styled(NavLink).attrs({ activeclassname })`
+  ${LinkStyles}
 
   &.${activeclassname} {
-    &::before {
-      opacity: 1;
-    }
+    transform: scale(1.1);
+    color: ${({ theme }) => theme.colors.orange};
   }
+`;
+
+export const StyledLink = styled(Link)`
+  ${LinkStyles}
 `;

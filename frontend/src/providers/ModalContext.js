@@ -1,10 +1,12 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export const Modals = createContext({
   modalState: false,
   handleModalState: () => {},
   modalMessage: "",
 });
+
+export const useModal = () => useContext(Modals);
 
 const ModalContext = ({ children }) => {
   const [modalState, setModalState] = useState(false);
@@ -15,7 +17,7 @@ const ModalContext = ({ children }) => {
     setModalState(true);
     setTimeout(() => {
       setModalState(false);
-    }, 5000);
+    }, 2000);
   };
 
   return (
@@ -24,7 +26,6 @@ const ModalContext = ({ children }) => {
         modalState,
         handleModalState,
         modalMessage,
-        setModalMessage,
       }}
     >
       {children}

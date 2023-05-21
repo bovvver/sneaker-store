@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        font-family: 'Kumbh Sans', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     #root{

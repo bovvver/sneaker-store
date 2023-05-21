@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { Nav } from "../../../providers/NavContext";
+import React from "react";
+import { useNav } from "../../../providers/NavContext";
 
 const CloseButton = () => {
-  const { state, handleNavClick } = useContext(Nav);
+  const { state, handleNavClick } = useNav();
 
   return (
     <svg

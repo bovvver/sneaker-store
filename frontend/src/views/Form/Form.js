@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Wrapper, SubmitButton, InputBlock, StyledForm } from "./Form.styles";
 import { useForm } from "react-hook-form";
 import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Modals } from "../../providers/ModalContext";
-import { CartCtx } from "../../providers/CartConext";
+import { useModal } from "../../providers/ModalContext";
+import { useCart } from "../../providers/CartConext";
 import { useNavigate } from "react-router-dom";
 import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
@@ -52,8 +52,8 @@ const schema = yup
   .required();
 
 const Form = () => {
-  const { handleModalState } = useContext(Modals);
-  const { clearCart } = useContext(CartCtx);
+  const { handleModalState } = useModal();
+  const { clearCart } = useCart();
   const navigate = useNavigate();
 
   const {
@@ -74,15 +74,19 @@ const Form = () => {
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
           <InputBlock>
             <input {...register("name")} type="text" placeholder="Name" />
-            {errors.name ? <span>{errors.name.message}</span> : null}
+            {errors.name ? <span>{errors.name.message}</span> : <span></span>}
           </InputBlock>
           <InputBlock>
             <input {...register("surname")} type="text" placeholder="Surname" />
-            {errors.surname ? <span>{errors.surname.message}</span> : null}
+            {errors.surname ? (
+              <span>{errors.surname.message}</span>
+            ) : (
+              <span></span>
+            )}
           </InputBlock>
           <InputBlock>
             <input {...register("email")} type="text" placeholder="E-mail" />
-            {errors.email ? <span>{errors.email.message}</span> : null}
+            {errors.email ? <span>{errors.email.message}</span> : <span></span>}
           </InputBlock>
           <InputBlock>
             <input
@@ -92,7 +96,9 @@ const Form = () => {
             />
             {errors.phoneNumber ? (
               <span>{errors.phoneNumber.message}</span>
-            ) : null}
+            ) : (
+              <span></span>
+            )}
           </InputBlock>
           <InputBlock>
             <input
@@ -100,15 +106,23 @@ const Form = () => {
               type="text"
               placeholder="Zip code"
             />
-            {errors.zipCode ? <span>{errors.zipCode.message}</span> : null}
+            {errors.zipCode ? (
+              <span>{errors.zipCode.message}</span>
+            ) : (
+              <span></span>
+            )}
           </InputBlock>
           <InputBlock>
             <input {...register("city")} type="text" placeholder="City" />
-            {errors.city ? <span>{errors.city.message}</span> : null}
+            {errors.city ? <span>{errors.city.message}</span> : <span></span>}
           </InputBlock>
           <InputBlock>
             <input {...register("street")} type="text" placeholder="Street" />
-            {errors.street ? <span>{errors.street.message}</span> : null}
+            {errors.street ? (
+              <span>{errors.street.message}</span>
+            ) : (
+              <span></span>
+            )}
           </InputBlock>
           <InputBlock>
             <input
@@ -118,7 +132,9 @@ const Form = () => {
             />
             {errors.houseNumber ? (
               <span>{errors.houseNumber.message}</span>
-            ) : null}
+            ) : (
+              <span></span>
+            )}
           </InputBlock>
           <InputBlock>
             <input
@@ -128,7 +144,9 @@ const Form = () => {
             />
             {errors.apartmentNumber ? (
               <span>{errors.apartmentNumber.message}</span>
-            ) : null}
+            ) : (
+              <span></span>
+            )}
           </InputBlock>
           <SubmitButton data-testid="btn" type="submit" value="Order" />
         </StyledForm>

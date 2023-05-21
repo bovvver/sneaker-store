@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Button from "../../atoms/Button/Button";
 import {
   Wrapper,
@@ -8,11 +8,11 @@ import {
   EmptyCart,
 } from "./Cart.styles";
 import CartItem from "../CartItem/CartItem";
-import { CartCtx } from "../../../providers/CartConext";
+import { useCart } from "../../../providers/CartConext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { state, cart, handleCartClick } = useContext(CartCtx);
+  const { state, cart, handleCartClick } = useCart();
   const navigate = useNavigate();
 
   const handleClick = () => {

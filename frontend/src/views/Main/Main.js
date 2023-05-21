@@ -5,7 +5,6 @@ import Product from "../../components/molecules/Product/Product";
 import data from "../../data/data";
 import { useParams } from "react-router-dom";
 import { CustomLink, ProductsWrapper } from "./Main.styles";
-import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
 const Main = () => {
   let title;
@@ -43,7 +42,6 @@ const Main = () => {
           ))}
         </ProductsWrapper>
       </Wrapper>
-      <SvgWaves />
     </>
   );
 };

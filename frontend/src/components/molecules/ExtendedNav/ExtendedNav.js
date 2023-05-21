@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { Wrapper, Links, StyledLink } from "./ExtendedNav.styles";
 import CloseButton from "../../atoms/CloseButton/CloseButton";
-import { Nav } from "../../../providers/NavContext";
+import { useNav } from "../../../providers/NavContext";
 
 const ExtendedNav = () => {
-  const { state, handleNavClick } = useContext(Nav);
+  const { state, handleNavClick } = useNav();
   let navStyles = {};
 
   navStyles = !state ? { right: "100%" } : {};
@@ -26,9 +26,9 @@ const ExtendedNav = () => {
         >
           Women
         </StyledLink>
-        <StyledLink to="/sneaker-store/about" onClick={handleNavClick}>
+        {/* <StyledLink to="/sneaker-store/about" onClick={handleNavClick}>
           About Us
-        </StyledLink>
+        </StyledLink> */}
       </Links>
     </Wrapper>,
     document.getElementById("navigation")

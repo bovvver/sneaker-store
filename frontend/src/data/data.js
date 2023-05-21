@@ -86,7 +86,7 @@ const data = {
       "220.00",
       "men",
       [Yeezy1, Yeezy2, Yeezy3]
-    ),
+    )
   ],
 };
 

@@ -50,7 +50,6 @@ export const NextImgBtn = styled.button`
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 5px 1px ${({ theme }) => theme.colors.black};
   transform: translate(0, -50%);
   transition: transform 0.1s;
 
@@ -72,7 +71,7 @@ export const BigImage = styled.img`
 
   ${mq[2]} {
     max-height: 70vh;
-    border-radius: 25px;
+    border-radius: 10px;
   }
 `;
 

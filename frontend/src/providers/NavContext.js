@@ -1,9 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export const Nav = createContext({
   state: false,
   handleNavClick: () => {},
 });
+
+export const useNav = () => useContext(Nav);
 
 const NavContext = ({ children }) => {
   const [open, setOpen] = useState(false);

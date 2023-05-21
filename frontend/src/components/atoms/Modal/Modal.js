@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import CartImg from "../CartImg/CartImg";
 import { ModalBody } from "./Modal.styles";
-import { Modals } from "../../../providers/ModalContext";
+import { useModal } from "../../../providers/ModalContext";
 
 const Modal = () => {
-  const { modalState, modalMessage } = useContext(Modals);
+  const { modalState, modalMessage } = useModal();
 
   return createPortal(
     <ModalBody style={modalState ? { top: "2em" } : {}}>

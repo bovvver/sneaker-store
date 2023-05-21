@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Wrapper,
   AboutContent,
@@ -9,10 +9,10 @@ import {
 import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
 import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 import data from "../../data/data";
-import { ScreenSize } from "../../providers/ScreenSizeContext";
+import { useSize } from "../../providers/ScreenSizeContext";
 
 const About = () => {
-  const { screenWidth } = useContext(ScreenSize);
+  const { screenWidth } = useSize();
 
   const photoSrc = data.sneakers[3].photos[2];
 
