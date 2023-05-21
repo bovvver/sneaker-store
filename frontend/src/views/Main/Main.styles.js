@@ -30,3 +30,27 @@ export const ProductsWrapper = styled.div`
     align-items: center;
   }
 `;
+
+export const SortingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  svg {
+    margin: 0 0.5em;
+    padding: 0.3em;
+    font-size: 2.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.lightGrayishBlue};
+    }
+  }
+`;

@@ -43,7 +43,7 @@ Product.propTypes = {
   producer: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
 };
 
 export default Product;

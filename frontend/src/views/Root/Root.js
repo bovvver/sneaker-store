@@ -31,7 +31,7 @@ const Root = () => {
       <Modal />
       <Routes>
         <Route path="/sneaker-store/" element={<Main />} />
-        <Route path="/sneaker-store/collection/:id" element={<Main />} />
+        <Route path="/sneaker-store/collection/:gender" element={<Main />} />
         <Route path="/sneaker-store/product/:id" element={<ProductSection />} />
         {isAuthenticated ? (
           <>
