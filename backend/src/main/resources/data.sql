@@ -8,25 +8,14 @@ INSERT INTO SNEAKERS (id, description, gender, name, price, producer) VALUES (4,
 
 INSERT INTO SNEAKERS (id, description, gender, name, price, producer) VALUES (5, 'Yeezy is a line of sports sneakers and apparel for men. The collection was launched in 2009. It is created by American rapper, Kanye West, as part of the Adidas brand. The duo''s latest offering, the Yeezy Boost sneakers, are enduringly popular.', 'men', 'Yeezy Boost', 220.00, 'adidas');
 
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (1, 'jordan-01', '../data/photos/Jordan1/jordan1small.jpg', 1);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (2, 'jordan-02', '../data/photos/Jordan1/jordan2small.jpg', 1);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (3, 'jordan-03', '../data/photos/Jordan1/jordan3small.jpg', 1);
---
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (4, 'force-01', '../data/photos/AirForce1/force1small.jpg', 2);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (5, 'force-02', '../data/photos/AirForce1/force2small.jpg', 2);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (6, 'force-03', '../data/photos/AirForce1/force3small.jpg', 2);
---
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (7, 'disruptor-01', '../data/photos/FilaDisruptor/fila1small.jpg', 3);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (8, 'disruptor-02', '../data/photos/FilaDisruptor/fila2small.jpg', 3);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (9, 'disruptor-03', '../data/photos/FilaDisruptor/fila3small.jpg', 3);
---
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (10, 'vans-01', '../data/photos/Vans/vans1small.jpg', 4);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (11, 'vans-02', '../data/photos/Vans/vans2small.jpg', 4);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (12, 'vans-03', '../data/photos/Vans/vans3small.jpg', 4);
---
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (13, 'yeezy-01', '../data/photos/Yeezy/yeezy1small.jpg', 5);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (14, 'yeezy-02', '../data/photos/Yeezy/yeezy2small.jpg', 5);
---INSERT INTO PHOTO (id, name, path, sneaker_id) VALUES (15, 'yeezy-03', '../data/photos/Yeezy/yeezy3small.jpg', 5);
+INSERT INTO SNEAKERS (id, description, gender, name, price, producer) VALUES (6, 'Go conquer the city in the Blazer MID''77 sneakers from Nike! This is an updated version of a basketball classic from the 1970s. In addition to a great old-school look, the shoes offer 100% comfort. Their synthetic leather upper is partly recycled, but loses none of its quality.', 'unisex', 'Blazer Mid ''77', 100.00, 'Nike');
+
+INSERT INTO SNEAKERS (id, description, gender, name, price, producer) VALUES (7, 'Basketball sneakers have firmly established themselves in street fashion. If you want a model in your collection that catches the eye with its sophisticated design but also offers comfort and a stable step, look no further than this updated version of an old classic from 1989.', 'women', '550', 100.00, 'New Balance');
+
+INSERT INTO SNEAKERS (id, description, gender, name, price, producer) VALUES (8, 'The Nike Air VaporMax Plus shoe harkens back to a classic model, but its design expresses ideas of the future. The model is a nod to the 1998 Air Max Plus shoes with a raised heel counter, cushioned upper and logo on the heel, but the revolutionary VaporMax Air technology enhances comfort and gives a modern look.', 'men', 'Air VaporMax Plus', 250.00, 'Nike');
+
+INSERT INTO SNEAKERS (id, description, gender, name, price, producer) VALUES (9, 'The Chuck 70 model is a retrospective that uses a modern design to celebrate the original 1970s All Star shoes. Features such as more cushioning and thicker rubber allow you to rediscover the era of classic basketball off the court. They have the look and style of the ''70s Chucks, but without the scent.', 'unisex', 'Chuck 70', 120.00, 'Converse');
+
 
 INSERT INTO PHOTO (id, path, sneaker_id) VALUES (1, '../data/photos/Jordan1/jordan1small.jpg', 1);
 INSERT INTO PHOTO (id, path, sneaker_id) VALUES (2, '../data/photos/Jordan1/jordan2small.jpg', 1);
@@ -47,3 +36,18 @@ INSERT INTO PHOTO (id, path, sneaker_id) VALUES (12, '../data/photos/Vans/vans3s
 INSERT INTO PHOTO (id, path, sneaker_id) VALUES (13, '../data/photos/Yeezy/yeezy1small.jpg', 5);
 INSERT INTO PHOTO (id, path, sneaker_id) VALUES (14, '../data/photos/Yeezy/yeezy2small.jpg', 5);
 INSERT INTO PHOTO (id, path, sneaker_id) VALUES (15, '../data/photos/Yeezy/yeezy3small.jpg', 5);
+
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (16, '../data/photos/Blazer/blazer1small.jpg', 6);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (17, '../data/photos/Blazer/blazer2small.jpg', 6);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (18, '../data/photos/Blazer/blazer3small.jpg', 6);
+
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (19, '../data/photos/550/newbalance1small.jpg', 7);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (20, '../data/photos/550/newbalance2small.jpg', 7);
+
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (21, '../data/photos/Vapor/vapor1small.jpg', 8);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (22, '../data/photos/Vapor/vapor2small.jpg', 8);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (23, '../data/photos/Vapor/vapor3small.jpg', 8);
+
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (24, '../data/photos/Chuck/chuck1small.jpg', 9);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (25, '../data/photos/Chuck/chuck2small.jpg', 9);
+INSERT INTO PHOTO (id, path, sneaker_id) VALUES (26, '../data/photos/Chuck/chuck3small.jpg', 9);
