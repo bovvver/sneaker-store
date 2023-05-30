@@ -2,18 +2,18 @@ package com.github.sneakerstore.photo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.sneakerstore.sneaker.Sneaker;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.*;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 public class Photo {
+    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue
     @JsonIgnore
@@ -22,4 +22,9 @@ public class Photo {
     @JsonIgnore
     @ManyToOne
     private Sneaker sneaker;
+
+    public Photo(String path, Sneaker sneaker) {
+        this.path = path;
+        this.sneaker = sneaker;
+    }
 }
