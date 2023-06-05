@@ -20,7 +20,7 @@ public class OrderRepositoryTest implements BaseRepositoryTest {
     private int orderId;
 
     @BeforeEach
-    public void testInitialization() {
+    public void test_initialization() {
         Order createdOrder = repository.save(new Order());
         orderId = createdOrder.getId();
     }
@@ -28,14 +28,14 @@ public class OrderRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table creation testing")
-    public void testCreate() {
+    public void test_create() {
         assertNotNull(repository.findById(orderId));
     }
 
     @Override
     @Test
     @DisplayName("Table read testing")
-    public void testRead() {
+    public void test_read() {
         Optional<Order> readOrder = repository.findById(orderId);
         assertTrue(readOrder.isPresent());
     }
@@ -43,7 +43,7 @@ public class OrderRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table update testing")
-    public void testUpdate() {
+    public void test_update() {
         Optional<Order> updatedOrder = repository.findById(orderId);
         updatedOrder.ifPresent(order -> order.setQuantity(10));
         assertEquals(updatedOrder.get().getQuantity(), 10);
@@ -52,7 +52,7 @@ public class OrderRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table deletion testing")
-    public void testDelete() {
+    public void test_delete() {
         repository.deleteById(orderId);
         Optional<Order> deletedEntity = repository.findById(orderId);
         assertFalse(deletedEntity.isPresent());

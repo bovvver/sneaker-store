@@ -28,14 +28,14 @@ public class UserRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table creation testing")
-    public void testCreate() {
+    public void test_create() {
         assertNotNull(repository.findById(userId));
     }
 
     @Override
     @Test
     @DisplayName("Table read testing")
-    public void testRead() {
+    public void test_read() {
         Optional<User> readUser = repository.findById(userId);
         assertTrue(readUser.isPresent());
     }
@@ -43,7 +43,7 @@ public class UserRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table update testing")
-    public void testUpdate() {
+    public void test_update() {
         Optional<User> updatedUser = repository.findById(userId);
         updatedUser.ifPresent(order -> order.setUsername("test"));
         assertEquals(updatedUser.get().getUsername(), "test");
@@ -52,7 +52,7 @@ public class UserRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table deletion testing")
-    public void testDelete() {
+    public void test_delete() {
         repository.deleteById(userId);
         Optional<User> deletedUser = repository.findById(userId);
         assertFalse(deletedUser.isPresent());

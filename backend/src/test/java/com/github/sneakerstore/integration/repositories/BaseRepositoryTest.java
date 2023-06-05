@@ -1,11 +1,11 @@
 package com.github.sneakerstore.integration.repositories;
 
 public interface BaseRepositoryTest {
-    void testRead();
+    void test_read();
 
-    void testUpdate();
+    void test_update();
 
-    void testDelete();
+    void test_delete();
 
-    void testCreate();
+    void test_create();
 }

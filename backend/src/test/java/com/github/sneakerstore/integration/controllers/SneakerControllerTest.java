@@ -25,7 +25,7 @@ public class SneakerControllerTest {
 
     @Test
     @DisplayName("Retrieving every sneaker - integration test")
-    public void testRetrieveAllSneakers() {
+    public void should_retrieve_all_sneakers() {
         ResponseEntity<List<Sneaker>> response = restTemplate.exchange(
                 "http://localhost:8080/sneakers",
                 HttpMethod.GET,

@@ -28,14 +28,14 @@ public class SneakerRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table creation testing")
-    public void testCreate() {
+    public void test_create() {
         assertNotNull(repository.findById(sneakerId));
     }
 
     @Override
     @Test
     @DisplayName("Table read testing")
-    public void testRead() {
+    public void test_read() {
         Optional<Sneaker> readOrder = repository.findById(sneakerId);
         assertTrue(readOrder.isPresent());
     }
@@ -43,7 +43,7 @@ public class SneakerRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table update testing")
-    public void testUpdate() {
+    public void test_update() {
         Optional<Sneaker> updatedOrder = repository.findById(sneakerId);
         updatedOrder.ifPresent(order -> order.setName("TEST SNEAKER"));
         assertEquals(updatedOrder.get().getName(), "TEST SNEAKER");
@@ -52,7 +52,7 @@ public class SneakerRepositoryTest implements BaseRepositoryTest {
     @Override
     @Test
     @DisplayName("Table deletion testing")
-    public void testDelete() {
+    public void test_delete() {
         repository.deleteById(sneakerId);
         Optional<Sneaker> deletedEntity = repository.findById(sneakerId);
         assertFalse(deletedEntity.isPresent());

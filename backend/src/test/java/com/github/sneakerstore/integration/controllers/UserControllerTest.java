@@ -22,14 +22,14 @@ public class UserControllerTest {
 
     @BeforeEach
     @AfterEach
-    public void testInitialization() {
+    public void test_initialization() {
         restTemplate.postForEntity("http://localhost:8080/users/{userId}/clear-cart", null, User.class, testUserId);
         restTemplate.postForEntity("http://localhost:8080/users/{userId}/clear-cart", null, User.class, secondTestUserId);
     }
 
     @Test
     @DisplayName("Adding to and clearing cart - integration test")
-    public void testAddingToAndClearingCart() {
+    public void test_adding_to_and_clearing_cart() {
         ResponseEntity<User> response = restTemplate.postForEntity("http://localhost:8080/users/{userId}/cart/{sneakerId}/{quantity}", null, User.class, testUserId, 1, 1);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -47,7 +47,7 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("Adding to cart with problematic scenario - integration test")
-    public void testAddingToCart_problematicScenario() {
+    public void test_adding_to_cart_problematicScenario() {
         restTemplate.postForEntity("http://localhost:8080/users/{userId}/cart/{sneakerId}/{quantity}", null, User.class, testUserId, 1, 1);
         restTemplate.postForEntity("http://localhost:8080/users/{userId}/cart/{sneakerId}/{quantity}", null, User.class, secondTestUserId, 1, 1);
         ResponseEntity<User> response = restTemplate.postForEntity("http://localhost:8080/users/{userId}/cart/{sneakerId}/{quantity}", null, User.class, secondTestUserId, 1, 1);
