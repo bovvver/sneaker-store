@@ -31,6 +31,8 @@ const Main = () => {
     }
   }, [gender]);
 
+  
+
   const setAscDetails = () => {
     setDetails((prevDetails) =>
       [...prevDetails].sort((obj1, obj2) => obj2.price - obj1.price)
