@@ -13,13 +13,13 @@ import Price from "../../components/atoms/Price/Price";
 import AddSymbol from "../../components/atoms/AddSymbol/AddSymbol";
 import RemoveSymbol from "../../components/atoms/RemoveSymbol/RemoveSymbol";
 import { useNavigate, useParams } from "react-router-dom";
-import data from "../../data/data";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
 import Button from "../../components/atoms/Button/Button";
 import { useCart } from "../../providers/CartConext";
 import { useAuth } from "../../providers/AuthContext";
 import { useModal } from "../../providers/ModalContext";
+import { useData } from "../../providers/DataContext";
 
 const ProductSection = () => {
   const [pieces, setPieces] = useState(0);
@@ -28,10 +28,14 @@ const ProductSection = () => {
   const { handleModalState } = useModal();
   const { isAuthenticated } = useAuth();
   const { id } = useParams();
+  const { dataRef } = useData();
   const navigate = useNavigate();
 
   const checkProduct = (element) => {
-    const checkFormula = `${element.producer}-${element.id.split("-")[0]}`;
+    const checkFormula = `${element.producer}-${element.name.replaceAll(
+      " ",
+      "-"
+    )}`;
     if (id === checkFormula) return element;
   };
 
@@ -60,17 +64,16 @@ const ProductSection = () => {
     }
   };
 
-  const filteredArray = data.sneakers.filter(checkProduct);
-  const [product] = filteredArray;
+  const [product] = dataRef.current.filter(checkProduct);
 
   return (
     <SectionWrapper>
       <ImageWrapper>
         <BigImage
-          src={product.photos[photoIndex]}
+          src={product.photos[photoIndex].path}
           alt={`${product.producer} ${product.name} photo.`}
         />
-        <NextImgBtn onClick={() => previousPhoto(photoIndex)}>
+        <NextImgBtn onClick={previousPhoto}>
           <PrevBtn />
         </NextImgBtn>
         <NextImgBtn onClick={nextPhoto}>

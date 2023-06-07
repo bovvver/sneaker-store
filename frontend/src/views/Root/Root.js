@@ -17,6 +17,7 @@ import DesktopNavigation from "../../components/organisms/DesktopNavigation/Desk
 import NotFound from "../NotFound/NotFound";
 import SignUpForm from "../SignUpForm/SignUpForm";
 import { useAuth } from "../../providers/AuthContext";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const Root = () => {
   const { screenWidth } = useSize();
@@ -33,6 +34,7 @@ const Root = () => {
         <Route path="/sneaker-store/" element={<Main />} />
         <Route path="/sneaker-store/collection/:gender" element={<Main />} />
         <Route path="/sneaker-store/product/:id" element={<ProductSection />} />
+        <Route path="/sneaker-store/error" element={<ErrorPage />} />
         {isAuthenticated ? (
           <>
             <Route path="/sneaker-store/summary" element={<Summary />} />

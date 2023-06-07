@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
 import { Wrapper, SortingWrapper } from "./Main.styles";
+import LoadingScreen from "../../components/atoms/LoadingScreen/LoadingScreen";
 import Product from "../../components/molecules/Product/Product";
-import data from "../../data/data";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CustomLink, ProductsWrapper } from "./Main.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,25 +13,50 @@ import {
   faArrowDown19,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSize } from "../../providers/ScreenSizeContext";
+import { useModal } from "../../providers/ModalContext";
+import { useLoading } from "../../providers/LoadingContext";
+import { useData } from "../../providers/DataContext";
+import axios from "axios";
 
 const Main = () => {
-  const [details, setDetails] = useState(data.sneakers);
+  const [details, setDetails] = useState([]);
+  const [isDataFetched, setIsDataFetched] = useState(false);
   const { gender } = useParams();
   const { screenWidth } = useSize();
+  const { loading, setLoading } = useLoading();
+  const { handleModalState } = useModal();
+  const { dataRef, handleRefChange } = useData();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (gender !== undefined) {
-      const sneakers = data.sneakers.filter(
+    const fetchSneakers = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/sneakers");
+        handleRefChange(response.data);
+        setDetails(response.data);
+        setIsDataFetched(true);
+        setLoading(false);
+      } catch (error) {
+        navigate("/sneaker-store/error");
+      }
+    };
+
+    if (!isDataFetched) {
+      fetchSneakers();
+    }
+  }, [handleModalState, handleRefChange, isDataFetched, navigate, setLoading]);
+
+  useEffect(() => {
+    if (gender !== undefined && isDataFetched) {
+      const sneakers = dataRef.current.filter(
         (el) => el.gender === gender || el.gender === "unisex"
       );
 
       setDetails(sneakers);
     } else {
-      setDetails(data.sneakers);
+      setDetails(dataRef.current);
     }
-  }, [gender]);
-
-  
+  }, [dataRef, gender, isDataFetched]);
 
   const setAscDetails = () => {
     setDetails((prevDetails) =>
@@ -76,22 +101,24 @@ const Main = () => {
           <FontAwesomeIcon onClick={setAscDetails} icon={faArrowDown91} />
         </SortingWrapper>
         <ProductsWrapper>
-          {details.map((el) => (
-            <CustomLink
-              key={el.id}
-              to={`/sneaker-store/product/${el.producer}-${
-                el.id.split("-")[0]
-              }`}
-            >
-              <Product
-                image={el.photos[0]}
-                producer={el.producer}
-                name={el.name}
-                description={el.description}
-                price={el.price}
-              />
-            </CustomLink>
-          ))}
+          {loading ? (
+            <LoadingScreen />
+          ) : (
+            details.map((el) => (
+              <CustomLink
+                key={el.id}
+                to={`/sneaker-store/product/${el.producer}-${el.name.replaceAll(" ","-")}`}
+              >
+                <Product
+                  image={el.photos[0].path}
+                  producer={el.producer}
+                  name={el.name}
+                  description={el.description}
+                  price={el.price}
+                />
+              </CustomLink>
+            ))
+          )}
         </ProductsWrapper>
       </Wrapper>
     </>
