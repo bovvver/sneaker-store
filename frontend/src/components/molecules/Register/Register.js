@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useModal } from "../../../providers/ModalContext";
+import { useAuth } from "../../../providers/AuthContext";
 
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
@@ -29,7 +30,7 @@ const schema = yup
   .required();
 
 const Register = ({ loginState }) => {
-  const { handleModalState } = useModal();
+  const { handleRegister } = useAuth();
   const {
     register,
     handleSubmit,
@@ -37,8 +38,8 @@ const Register = ({ loginState }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    handleModalState("Account created");
-    console.log("Account created:", data);
+    const { confirmPassword, ...newData } = data;
+    handleRegister(newData);
     loginState();
   };
 

@@ -1,11 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../providers/AuthContext";
-import { useModal } from "../../../providers/ModalContext";
 
 const Login = ({ loginState }) => {
-  const { setUsername, handleLogin } = useAuth();
-  const { handleModalState } = useModal();
+  const { handleLogin } = useAuth();
   const {
     register,
     handleSubmit,
@@ -14,13 +12,8 @@ const Login = ({ loginState }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (data.username === "dev" && data.password === "dev") {
-      handleLogin();
-      setUsername(data.username);
-    } else {
-      handleModalState("Invalid credentials");
-      reset();
-    }
+    handleLogin(data);
+    reset();
   };
 
   return (
@@ -28,11 +21,11 @@ const Login = ({ loginState }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Log In</h2>
         <input
-          {...register("username", { required: true })}
-          placeholder="Username"
+          {...register("email", { required: true })}
+          placeholder="E-mail"
           type="text"
         />
-        {errors.username ? <span>Required</span> : <span></span>}
+        {errors.email ? <span>Required</span> : <span></span>}
         <input
           {...register("password", { required: true })}
           placeholder="Password"

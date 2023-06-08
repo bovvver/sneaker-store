@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Wrapper, SectionWrapper } from "./ProductSection.styles";
 import {
   ImageWrapper,
@@ -16,6 +16,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import NextBtn from "../../components/atoms/NextBtn/NextBtn";
 import PrevBtn from "../../components/atoms/PrevBtn/PrevBtn";
 import Button from "../../components/atoms/Button/Button";
+import LoadingScreen from "../../components/atoms/LoadingScreen/LoadingScreen";
 import { useCart } from "../../providers/CartConext";
 import { useAuth } from "../../providers/AuthContext";
 import { useModal } from "../../providers/ModalContext";
@@ -24,20 +25,22 @@ import { useData } from "../../providers/DataContext";
 const ProductSection = () => {
   const [pieces, setPieces] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [product, setProduct] = useState();
+  const [loading, setLoading] = useState(true);
   const { handleButtonClick } = useCart();
   const { handleModalState } = useModal();
   const { isAuthenticated } = useAuth();
+  const { dataRef, isDataFetched } = useData();
   const { id } = useParams();
-  const { dataRef } = useData();
   const navigate = useNavigate();
 
-  const checkProduct = (element) => {
-    const checkFormula = `${element.producer}-${element.name.replaceAll(
-      " ",
-      "-"
-    )}`;
-    if (id === checkFormula) return element;
-  };
+  useEffect(() => {
+    if (isDataFetched) {
+      const [filteredProduct] = dataRef.current.filter((el) => id === `${el.producer}-${el.name.replaceAll(" ", "-")}`);
+      setProduct(filteredProduct);
+      setLoading(false);
+    }
+  }, [dataRef, id, isDataFetched, setLoading]);
 
   const nextPhoto = () => {
     if (photoIndex === product.photos.length - 1) setPhotoIndex(0);
@@ -64,43 +67,47 @@ const ProductSection = () => {
     }
   };
 
-  const [product] = dataRef.current.filter(checkProduct);
-
   return (
     <SectionWrapper>
-      <ImageWrapper>
-        <BigImage
-          src={product.photos[photoIndex].path}
-          alt={`${product.producer} ${product.name} photo.`}
-        />
-        <NextImgBtn onClick={previousPhoto}>
-          <PrevBtn />
-        </NextImgBtn>
-        <NextImgBtn onClick={nextPhoto}>
-          <NextBtn />
-        </NextImgBtn>
-      </ImageWrapper>
-      <Wrapper>
-        <Producer content={product.producer} />
-        <Name content={product.name} />
-        <Description content={product.description} />
-        <Price content={product.price} />
-        <ButtonsWrapper>
-          <AddSymbol onClick={addPiece} />
-          <p>{pieces}</p>
-          <RemoveSymbol onClick={removePiece} />
-        </ButtonsWrapper>
-        <Button
-          onClick={
-            isAuthenticated
-              ? handleClick
-              : () => {
-                  navigate("/sneaker-store/login");
-                }
-          }
-          content="Add to cart"
-        />
-      </Wrapper>
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <>
+          <ImageWrapper>
+            <BigImage
+              src={product.photos[photoIndex].path}
+              alt={`${product.producer} ${product.name} photo.`}
+            />
+            <NextImgBtn onClick={previousPhoto}>
+              <PrevBtn />
+            </NextImgBtn>
+            <NextImgBtn onClick={nextPhoto}>
+              <NextBtn />
+            </NextImgBtn>
+          </ImageWrapper>
+          <Wrapper>
+            <Producer content={product.producer} />
+            <Name content={product.name} />
+            <Description content={product.description} />
+            <Price content={product.price} />
+            <ButtonsWrapper>
+              <AddSymbol onClick={addPiece} />
+              <p>{pieces}</p>
+              <RemoveSymbol onClick={removePiece} />
+            </ButtonsWrapper>
+            <Button
+              onClick={
+                isAuthenticated
+                  ? handleClick
+                  : () => {
+                      navigate("/sneaker-store/login");
+                    }
+              }
+              content="Add to cart"
+            />
+          </Wrapper>
+        </>
+      )}
     </SectionWrapper>
   );
 };

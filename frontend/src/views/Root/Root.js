@@ -40,9 +40,9 @@ const Root = () => {
             <Route path="/sneaker-store/summary" element={<Summary />} />
             <Route path="/sneaker-store/finish-page" element={<Form />} />
           </>
-        ) : null}
-
-        <Route path="/sneaker-store/login" element={<SignUpForm />} />
+        ) : (
+          <Route path="/sneaker-store/login" element={<SignUpForm />} />
+        )}
         <Route path="/sneaker-store/*" element={<NotFound />} />
       </Routes>
     </ThemeProvider>
