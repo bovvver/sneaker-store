@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/styles/fonts.css";
 import { ThemeProvider } from "styled-components";
 import theme from "../../assets/styles/theme";
@@ -18,10 +18,19 @@ import NotFound from "../NotFound/NotFound";
 import SignUpForm from "../SignUpForm/SignUpForm";
 import { useAuth } from "../../providers/AuthContext";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Cookies from "universal-cookie";
 
 const Root = () => {
   const { screenWidth } = useSize();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+  useEffect(() => {
+    const cookies = new Cookies();
+
+    if (cookies.get("jwt-present")) {
+      setIsAuthenticated(true);
+    }
+  }, [setIsAuthenticated]);
 
   return (
     <ThemeProvider theme={theme}>

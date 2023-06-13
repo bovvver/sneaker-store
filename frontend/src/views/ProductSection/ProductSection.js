@@ -36,7 +36,9 @@ const ProductSection = () => {
 
   useEffect(() => {
     if (isDataFetched) {
-      const [filteredProduct] = dataRef.current.filter((el) => id === `${el.producer}-${el.name.replaceAll(" ", "-")}`);
+      const [filteredProduct] = dataRef.current.filter(
+        (el) => id === `${el.producer}-${el.name.replaceAll(" ", "-")}`
+      );
       setProduct(filteredProduct);
       setLoading(false);
     }

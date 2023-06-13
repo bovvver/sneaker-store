@@ -23,7 +23,9 @@ const DataContext = ({ children }) => {
   useEffect(() => {
     const fetchSneakers = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/sneakers");
+        const response = await axios.get("http://localhost:8080/sneakers", {
+          withCredentials: true,
+        });
         dataRef.current = response.data;
         setIsDataFetched(true);
       } catch (error) {

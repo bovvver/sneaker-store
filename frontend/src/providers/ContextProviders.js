@@ -9,15 +9,15 @@ import DataContext from "./DataContext";
 const ContextProviders = ({ children }) => {
   return (
     <ScreenSizeContext>
-      <NavContext>
-        <DataContext>
-          <CartConext>
-            <ModalContext>
-              <AuthContext>{children}</AuthContext>
-            </ModalContext>
-          </CartConext>
-        </DataContext>
-      </NavContext>
+      <AuthContext>
+        <ModalContext>
+          <NavContext>
+            <DataContext>
+              <CartConext>{children}</CartConext>
+            </DataContext>
+          </NavContext>
+        </ModalContext>
+      </AuthContext>
     </ScreenSizeContext>
   );
 };

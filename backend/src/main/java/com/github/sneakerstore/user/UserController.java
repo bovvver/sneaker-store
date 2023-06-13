@@ -1,13 +1,11 @@
 package com.github.sneakerstore.user;
 
 import com.github.sneakerstore.order.Order;
+import jakarta.servlet.http.Cookie;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +15,9 @@ import java.util.List;
 public class UserController {
     private UserService userService;
 
-    @GetMapping("/users") // REMOVE IN PRODUCTION
-    public List<User> findAll() {
-        return userService.findAll();
-    }
-
-    @GetMapping("/users/{userId}/cart")
-    public List<Order> findOrdersById(@PathVariable int userId) {
+    @GetMapping("/users/cart")
+    public List<Order> findOrdersById(@CookieValue(name = "user-id")Cookie userCookie) {
+        int userId = Integer.parseInt(userCookie.getValue());
         return userService.findOrdersById(userId);
     }
 
@@ -32,8 +26,9 @@ public class UserController {
         return userService.clearCart(userId);
     }
 
-    @PostMapping("/users/{userId}/cart/{sneakerId}/{quantity}")
-    public ResponseEntity<User> addToCart(@PathVariable int userId, @PathVariable int sneakerId, @PathVariable int quantity) {
+    @PostMapping("/users/cart/{sneakerId}/{quantity}")
+    public ResponseEntity<List<Order>> addToCart(@CookieValue(name = "user-id")Cookie userCookie, @PathVariable int sneakerId, @PathVariable int quantity) {
+        int userId = Integer.parseInt(userCookie.getValue());
         return userService.addToCart(userId, sneakerId, quantity);
     }
 }

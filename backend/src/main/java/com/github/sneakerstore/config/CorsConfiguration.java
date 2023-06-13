@@ -1,16 +1,20 @@
 package com.github.sneakerstore.config;
 
-import lombok.NonNull;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
     @Override
-    public void addCorsMappings(@NonNull CorsRegistry registry){
+    public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedMethods("*")
-                .allowedOrigins("http://localhost:3000");
+                .allowCredentials(true)
+                .allowedOrigins("http://localhost:3000", "https://localhost:3000")
+                .allowedMethods("GET", "POST")
+                .allowedHeaders("*")
+                .maxAge(3600);
     }
 }

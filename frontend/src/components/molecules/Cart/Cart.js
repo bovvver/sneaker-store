@@ -10,9 +10,11 @@ import {
 import CartItem from "../CartItem/CartItem";
 import { useCart } from "../../../providers/CartConext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../providers/AuthContext";
 
 const Cart = () => {
   const { state, cart, handleCartClick } = useCart();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -28,19 +30,19 @@ const Cart = () => {
     >
       <CartHeader>Cart</CartHeader>
       <CartProducts>
-        {cart.length === 0 ? (
+        {!isAuthenticated ? null : cart.length === 0 ? (
           <EmptyCart>Cart is empty.</EmptyCart>
         ) : (
           <ItemsWrapper>
-            {cart.map((el, index) => (
+            {cart.map((el) => (
               <CartItem
-                key={index}
-                id={el.item.id}
-                img={el.item.photos[0]}
-                name={el.item.name}
-                price={el.item.price}
-                pieces={el.pieces}
-                fullPrice={el.pieces * +el.item.price}
+                key={el.id}
+                id={el.id}
+                img={el.sneaker.photos[0].path}
+                name={el.sneaker.name}
+                price={el.sneaker.price}
+                pieces={el.quantity}
+                fullPrice={el.quantity * +el.sneaker.price}
               />
             ))}
             <Button onClick={handleClick} content="Checkout" />

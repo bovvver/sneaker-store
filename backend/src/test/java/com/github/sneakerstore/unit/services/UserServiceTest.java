@@ -1,5 +1,6 @@
 package com.github.sneakerstore.unit.services;
 
+import com.github.sneakerstore.order.Order;
 import com.github.sneakerstore.user.User;
 import com.github.sneakerstore.user.UserService;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +39,7 @@ public class UserServiceTest {
     public void should_add_to_cart() {
         Mockito.when(userService.addToCart(1, 2, 3)).thenReturn(ResponseEntity.ok().build());
 
-        ResponseEntity<User> result = userService.addToCart(1, 2, 3);
+        ResponseEntity<List<Order>> result = userService.addToCart(1, 2, 3);
 
         assertEquals(result.getStatusCode(), HttpStatus.OK);
         Mockito.verify(userService, Mockito.times(1)).addToCart(1, 2, 3);

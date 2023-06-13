@@ -5,44 +5,45 @@ import axios from "axios";
 
 export const Auth = createContext({
   isAuthenticated: false,
+  setIsAuthenticated: () => {},
   handleLogin: () => {},
   handleRegister: () => {},
-  username: "",
-  setUsername: () => {},
-  token: null,
 });
 
 export const useAuth = () => useContext(Auth);
 
 const AuthContext = ({ children }) => {
-  const [token, setToken] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState("");
   const { handleModalState } = useModal();
   const navigate = useNavigate();
 
-  const handleLoginStates = (newToken, newUsername, newAuthentication) => {
-    setToken(newToken);
-    setUsername(newUsername);
+  const handleContextStates = (newAuthentication) => {
     setIsAuthenticated(newAuthentication);
     navigate("/sneaker-store/");
-    handleModalState(newAuthentication ? "Login successful" : "Logged out");
+    handleModalState(newAuthentication ? "Login successful" : "Logged Out");
   };
 
   const handleLogin = async (data) => {
     if (!isAuthenticated) {
       try {
-        const response = await axios.post(
-          "http://localhost:8080/auth/authenticate",
-          data
-        );
-        handleLoginStates(response.data.accessToken, data.username, true);
+        await axios.post("http://localhost:8080/auth/authenticate", data, {
+          withCredentials: true,
+        });
+
+        handleContextStates(true);
       } catch (error) {
-        setToken(null);
         handleModalState("Invalid credentials");
       }
     } else {
-      handleLoginStates(null, "", false);
+      try {
+        await axios.post("http://localhost:8080/auth/logout", null, {
+          withCredentials: true,
+        });
+
+        handleContextStates(false);
+      } catch (error) {
+        handleModalState("Error during logout.");
+      }
     }
   };
 
@@ -59,11 +60,9 @@ const AuthContext = ({ children }) => {
     <Auth.Provider
       value={{
         isAuthenticated,
+        setIsAuthenticated,
         handleLogin,
         handleRegister,
-        username,
-        setUsername,
-        token,
       }}
     >
       {children}

@@ -38,14 +38,14 @@ public class UserService {
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
 
-    public ResponseEntity<User> addToCart(int userId, int sneakerId, int quantity) {
+    public ResponseEntity<List<Order>> addToCart(int userId, int sneakerId, int quantity) {
         Optional<User> optionalUser = userRepository.findById(userId);
 
         if(optionalUser.isPresent()){
             User user = optionalUser.get();
             Sneaker sneaker = sneakerService.findById(sneakerId);
             orderService.addOrder(user, sneaker, quantity);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return new ResponseEntity<>(user.getCart(), HttpStatus.OK);
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
 
