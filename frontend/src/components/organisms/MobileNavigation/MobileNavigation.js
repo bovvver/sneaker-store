@@ -3,10 +3,13 @@ import { Wrapper, TitleSection } from "./MobileNavigation.styles";
 import NavBars from "../../atoms/NavBars/NavBars";
 import SiteTitle from "../../atoms/SiteTitle/SiteTitle";
 import NavBtns from "../../molecules/NavBtns/NavBtns";
+import { useNav } from "../../../providers/NavContext";
 
 const MobileNavigation = () => {
+  const { scroll} = useNav();
+
   return (
-    <Wrapper>
+    <Wrapper scroll={scroll}>
       <TitleSection>
         <NavBars />
         <SiteTitle />

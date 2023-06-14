@@ -8,12 +8,14 @@ import {
 } from "./DesktopNavigation.styles";
 import NavBtns from "../../molecules/NavBtns/NavBtns";
 import { useAuth } from "../../../providers/AuthContext";
+import { useNav } from "../../../providers/NavContext";
 
 const DesktopNavigation = () => {
   const { handleLogin, isAuthenticated } = useAuth();
+  const { scroll } = useNav();
 
   return (
-    <Wrapper>
+    <Wrapper scroll={scroll}>
       <SiteTitle />
       <NavBlock>
         <StyledNavLink to="/sneaker-store/" end>

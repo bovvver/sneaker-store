@@ -1,6 +1,7 @@
 package com.github.sneakerstore.unit.services;
 
 import com.github.sneakerstore.order.Order;
+import com.github.sneakerstore.user.User;
 import com.github.sneakerstore.user.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,25 +12,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @WebMvcTest(UserService.class)
 public class UserServiceTest {
     @MockBean
     private UserService userService;
 
-//    @Test
-//    @DisplayName("Should clear cart")
-//    public void should_clear_cart() {
-//        User user = new User("testUser", null, null, null, List.of());
-//
-//        Mockito.when(userService.deleteItem(1,1)).thenReturn(ResponseEntity.ok().body(user));
-//
-//        ResponseEntity<User> result = userService.deleteItem(1,1);
-//        assertTrue((Objects.requireNonNull(result.getBody())).getCart().isEmpty());
-//        Mockito.verify(userService, Mockito.times(1)).deleteItem(1,1);
-//    } //todo: change to delete particular item test
+    @Test
+    @DisplayName("Should clear cart")
+    public void should_clear_cart() {
+        User user = new User("testUser", null, null, null, List.of());
+
+        Mockito.when(userService.clearCart(1)).thenReturn(ResponseEntity.ok().body(user.getCart()));
+
+        ResponseEntity<List<Order>> result = userService.clearCart(1);
+        assertTrue((Objects.requireNonNull(result.getBody())).isEmpty());
+        Mockito.verify(userService, Mockito.times(1)).deleteItem(1, 1);
+    }
 
     @Test
     @DisplayName("Should add to cart")

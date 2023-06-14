@@ -14,12 +14,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useSize } from "../../providers/ScreenSizeContext";
 import { useData } from "../../providers/DataContext";
+import Footer from "../../components/organisms/Footer/Footer";
 
 const Main = () => {
   const [details, setDetails] = useState([]);
   const { gender } = useParams();
   const { screenWidth } = useSize();
-  const [loading, setLoading]  = useState(true);
+  const [loading, setLoading] = useState(true);
   const { dataRef, isDataFetched } = useData();
 
   useEffect(() => {
@@ -94,7 +95,6 @@ const Main = () => {
                   " ",
                   "-"
                 )}`}
-
               >
                 <Product
                   image={el.photos[0].path}
@@ -108,6 +108,7 @@ const Main = () => {
           )}
         </ProductsWrapper>
       </Wrapper>
+      <Footer />
     </>
   );
 };

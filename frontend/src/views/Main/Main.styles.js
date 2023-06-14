@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import mq from "../../assets/styles/responsiveDesign";
 
 export const Wrapper = styled.div`
-  margin: auto;
+  margin: 5em auto auto;
   padding: 1.5em 3em;
   max-width: 1300px;
 `;

@@ -2,10 +2,10 @@ import styled from "styled-components";
 import mq from "../../../assets/styles/responsiveDesign";
 
 export const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
-  margin: 1em;
+  margin: 7em 1em 1em 1em;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 8px 8px 24px 0px ${({ theme }) => theme.colors.shadow};
