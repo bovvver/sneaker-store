@@ -27,6 +27,15 @@ public class OrderService {
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart is empty");
     }
 
+    public void deleteOrdersOwner(User user, Sneaker sneaker) {
+        Order order = orderRepository.findByOwnerAndSneaker(user, sneaker);
+        if (order != null) {
+            order.setOwner(null);
+            order.getSneaker().setOrder(null);
+            order.setSneaker(null);
+        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart is empty");
+    }
+
     public void addOrder(User owner, Sneaker sneaker, int quantity) {
         Order order = orderRepository.findByOwnerAndSneaker(owner, sneaker);
 

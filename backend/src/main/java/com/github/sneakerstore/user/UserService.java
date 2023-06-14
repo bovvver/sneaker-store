@@ -27,25 +27,42 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public ResponseEntity<User> clearCart(@PathVariable int userId) {
+    public ResponseEntity<List<Order>> clearCart(@PathVariable int userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
 
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             orderService.deleteOrdersOwner(user);
             user.getCart().clear();
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return new ResponseEntity<>(user.getCart(), HttpStatus.OK);
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
 
     public ResponseEntity<List<Order>> addToCart(int userId, int sneakerId, int quantity) {
         Optional<User> optionalUser = userRepository.findById(userId);
 
-        if(optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             Sneaker sneaker = sneakerService.findById(sneakerId);
             orderService.addOrder(user, sneaker, quantity);
             return new ResponseEntity<>(user.getCart(), HttpStatus.OK);
+        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+    }
+
+
+    public ResponseEntity<List<Order>> deleteItem(int userId, @PathVariable int sneakerId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        Sneaker sneaker = sneakerService.findById(sneakerId);
+
+        if (optionalUser.isPresent() && sneaker != null) {
+            User user = optionalUser.get();
+
+            List<Order> newCart = user.getCart().stream().filter(el -> el.getSneaker().getId() != sneakerId).toList();
+            orderService.deleteOrdersOwner(user, sneaker);
+
+            user.getCart().addAll(newCart);
+
+            return new ResponseEntity<>(newCart, HttpStatus.OK);
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
 

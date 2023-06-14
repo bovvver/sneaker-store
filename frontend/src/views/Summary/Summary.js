@@ -16,21 +16,21 @@ const Summary = () => {
     navigate("/sneaker-store/finish-page");
   };
 
-  cart.map((el) => (countPrice += +el.item.price * el.pieces));
+  cart.map((el) => (countPrice += el.sneaker.price * el.quantity));
 
   return (
     <>
       <Wrapper>
         <SectionHeader title="Your summary" />
-        {cart.map((el, index) => (
+        {cart.map((el) => (
           <CartItem
-            key={index}
-            id={el.item.id}
-            img={el.item.photos[0]}
-            name={el.item.name}
-            price={el.item.price}
-            pieces={el.pieces}
-            fullPrice={el.pieces * +el.item.price}
+            key={el.id}
+            id={el.sneaker.id}
+            img={el.sneaker.photos[0].path}
+            name={el.sneaker.name}
+            price={el.sneaker.price}
+            pieces={el.quantity}
+            fullPrice={el.quantity * +el.sneaker.price}
           />
         ))}
         <TotalPrice>

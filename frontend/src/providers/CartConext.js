@@ -29,8 +29,6 @@ const CartConext = ({ children }) => {
           })
           .then((res) => res.data);
 
-        console.log(response);
-
         setCart(response);
       } catch (error) {
         handleModalState(error.message);
@@ -48,21 +46,46 @@ const CartConext = ({ children }) => {
   };
 
   const handleButtonClick = async (pieces, item) => {
-    const response = await axios.post(
-      `http://localhost:8080/users/cart/${item.id}/${pieces}`,
-      null,
-      { withCredentials: true }
-    );
+    try {
+      const response = await axios
+        .post(`http://localhost:8080/users/cart/${item.id}/${pieces}`, null, {
+          withCredentials: true,
+        })
+        .then((res) => res.data);
 
-    console.log(response);
+      setCart(response);
+    } catch (error) {
+      handleModalState("Error during updating cart");
+    }
   };
 
-  const deleteItem = (id) => {
-    const cartCopy = cart.filter((el) => el.item.id !== id);
-    setCart(cartCopy);
+  const deleteItem = async (sneakerId) => {
+    try {
+      const response = await axios
+        .post(`http://localhost:8080/users/cart/delete/${sneakerId}`, null, {
+          withCredentials: true,
+        })
+        .then((res) => res.data);
+
+      setCart(response);
+    } catch (error) {
+      handleModalState("Error during deleting an item");
+    }
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = async () => {
+    try {
+      const response = await axios
+        .post(`http://localhost:8080/users/clear-cart`, null, {
+          withCredentials: true,
+        })
+        .then((res) => res.data);
+
+      setCart(response);
+    } catch (error) {
+      handleModalState("Error during clearing cart");
+    }
+  };
 
   return (
     <CartCtx.Provider
