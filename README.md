@@ -1,5 +1,7 @@
-
-
+ <div  align="center">
+ :warning:<b>WORK IN PROGRESS</b>:warning:<br/> README file you see below is for old version of this project that doesn't contain back-end. I'll update it as soon as I finish work on next version of this project! 
+</div><br/><br/>
+  
 <div  align="center">
 <a  href="https://github.com/MemeeMaster/sneaker-store">
 <img  src="/public/logo.png"  alt="Logo"  width="80"  height="80">
