@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   box-shadow: 8px 8px 24px 0px ${({ theme }) => theme.colors.shadow};
   transition: right 0.3s;
   overflow: hidden;
+  z-index: 10;
 
   svg {
     position: absolute;

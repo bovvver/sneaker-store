@@ -5,7 +5,7 @@ export const ModalBody = styled.div`
   left: 50%;
   top: -10%;
   padding: 1.4em;
-  width: 15em;
+  width: 17em;
   display: flex;
   justify-content: space-around;
   align-items: center;

@@ -23,10 +23,6 @@ public class UserService {
     private OrderService orderService;
     private SneakerService sneakerService;
 
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
     public ResponseEntity<List<Order>> clearCart(@PathVariable int userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
 
@@ -37,18 +33,6 @@ public class UserService {
             return new ResponseEntity<>(user.getCart(), HttpStatus.OK);
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
-
-    public ResponseEntity<List<Order>> addToCart(int userId, int sneakerId, int quantity) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            Sneaker sneaker = sneakerService.findById(sneakerId);
-            orderService.addOrder(user, sneaker, quantity);
-            return new ResponseEntity<>(user.getCart(), HttpStatus.OK);
-        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-    }
-
 
     public ResponseEntity<List<Order>> deleteItem(int userId, @PathVariable int sneakerId) {
         Optional<User> optionalUser = userRepository.findById(userId);
@@ -63,6 +47,17 @@ public class UserService {
             user.getCart().addAll(newCart);
 
             return new ResponseEntity<>(newCart, HttpStatus.OK);
+        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+    }
+
+    public ResponseEntity<List<Order>> addToCart(int userId, int sneakerId, int quantity) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            Sneaker sneaker = sneakerService.findById(sneakerId);
+            orderService.addOrder(user, sneaker, quantity);
+            return new ResponseEntity<>(user.getCart(), HttpStatus.OK);
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
 

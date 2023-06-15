@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 import { useModal } from "./ModalContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import {
+  executeAuthentication,
+  executeLogout,
+  executeRegistration,
+} from "../api/AuthenticationApiService";
 
 export const Auth = createContext({
   isAuthenticated: false,
@@ -26,9 +30,7 @@ const AuthContext = ({ children }) => {
   const handleLogin = async (data) => {
     if (!isAuthenticated) {
       try {
-        await axios.post("http://localhost:8080/auth/authenticate", data, {
-          withCredentials: true,
-        });
+        await executeAuthentication(data);
 
         handleContextStates(true);
       } catch (error) {
@@ -36,9 +38,7 @@ const AuthContext = ({ children }) => {
       }
     } else {
       try {
-        await axios.post("http://localhost:8080/auth/logout", null, {
-          withCredentials: true,
-        });
+        await executeLogout();
 
         handleContextStates(false);
       } catch (error) {
@@ -49,10 +49,11 @@ const AuthContext = ({ children }) => {
 
   const handleRegister = async (data) => {
     try {
-      await axios.post("http://localhost:8080/auth/register", data);
+      await executeRegistration(data);
+
       handleModalState("Account created");
     } catch (error) {
-      handleModalState("Registration error");
+      handleModalState("Account already exists");
     }
   };
 

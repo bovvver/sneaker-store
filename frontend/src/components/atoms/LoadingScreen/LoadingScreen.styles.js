@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.white};
+  z-index: 15;
 
   p {
     margin-bottom: 1.5em;

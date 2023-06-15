@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.orange};
   color: ${({ theme }) => theme.colors.white};
+  border-top: 1px solid ${({ theme }) => theme.colors.shadow};
 
   a {
     color: ${({ theme }) => theme.colors.white};

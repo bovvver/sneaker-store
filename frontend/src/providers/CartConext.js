@@ -1,7 +1,12 @@
-import axios from "axios";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { useAuth } from "../providers/AuthContext";
 import { useModal } from "../providers/ModalContext";
+import {
+  executeCartFetch,
+  executeItemAddition,
+  executeItemDeletion,
+  executeCartClear,
+} from "../api/CartApiService";
 
 export const CartCtx = createContext({
   opacity: false,
@@ -23,11 +28,7 @@ const CartConext = ({ children }) => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios
-          .get(`http://localhost:8080/users/cart`, {
-            withCredentials: true,
-          })
-          .then((res) => res.data);
+        const response = await executeCartFetch();
 
         setCart(response);
       } catch (error) {
@@ -47,11 +48,7 @@ const CartConext = ({ children }) => {
 
   const handleButtonClick = async (pieces, item) => {
     try {
-      const response = await axios
-        .post(`http://localhost:8080/users/cart/${item.id}/${pieces}`, null, {
-          withCredentials: true,
-        })
-        .then((res) => res.data);
+      const response = await executeItemAddition(pieces, item);
 
       setCart(response);
     } catch (error) {
@@ -61,11 +58,7 @@ const CartConext = ({ children }) => {
 
   const deleteItem = async (sneakerId) => {
     try {
-      const response = await axios
-        .post(`http://localhost:8080/users/cart/delete/${sneakerId}`, null, {
-          withCredentials: true,
-        })
-        .then((res) => res.data);
+      const response = await executeItemDeletion(sneakerId);
 
       setCart(response);
     } catch (error) {
@@ -75,11 +68,7 @@ const CartConext = ({ children }) => {
 
   const clearCart = async () => {
     try {
-      const response = await axios
-        .post(`http://localhost:8080/users/clear-cart`, null, {
-          withCredentials: true,
-        })
-        .then((res) => res.data);
+      const response = await executeCartClear();
 
       setCart(response);
     } catch (error) {

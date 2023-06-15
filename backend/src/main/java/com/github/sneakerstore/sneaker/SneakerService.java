@@ -18,7 +18,7 @@ public class SneakerService {
     }
 
     public Sneaker findById(int id) {
-        Optional<Sneaker> sneaker = sneakerRepository.findById(id); // ERROR PLACE
+        Optional<Sneaker> sneaker = sneakerRepository.findById(id);
 
         if (sneaker.isPresent())
             return sneaker.get();

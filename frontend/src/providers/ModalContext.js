@@ -15,6 +15,7 @@ const ModalContext = ({ children }) => {
   const handleModalState = (message) => {
     setModalMessage(message);
     setModalState(true);
+
     setTimeout(() => {
       setModalState(false);
     }, 2000);
