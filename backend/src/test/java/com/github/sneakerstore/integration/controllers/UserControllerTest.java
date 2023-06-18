@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
+
     private final int testUserId = 1;
     private final int secondTestUserId = 2;
 

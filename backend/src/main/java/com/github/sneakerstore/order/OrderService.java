@@ -2,7 +2,6 @@ package com.github.sneakerstore.order;
 
 import com.github.sneakerstore.sneaker.Sneaker;
 import com.github.sneakerstore.user.User;
-import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,6 @@ import java.util.List;
 @Transactional
 public class OrderService {
     private OrderRepository orderRepository;
-    private EntityManager entityManager;
 
     public void deleteOrdersOwner(User user) {
         List<Order> orders = orderRepository.findByOwner(user);
@@ -33,9 +31,11 @@ public class OrderService {
         Order order = orderRepository.findByOwnerAndSneaker(user, sneaker);
         if (order != null) {
             order.setOwner(null);
+            user.getCart().remove(order);
             order.getSneaker().setOrder(null);
             order.setSneaker(null);
             orderRepository.delete(order);
+
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart is empty");
     }
 
