@@ -44,9 +44,9 @@ public class UserRepositoryTest implements BaseRepositoryTest {
     @Test
     @DisplayName("Table update testing")
     public void test_update() {
-        Optional<User> updatedUser = repository.findById(userId);
-        updatedUser.ifPresent(order -> order.setUsername("test"));
-        assertEquals(updatedUser.get().getUsername(), "test");
+        Optional<User> updatedOrder = repository.findById(userId);
+        updatedOrder.ifPresent(order -> order.setEmail("TEST"));
+        assertEquals(updatedOrder.get().getUsername(), "TEST");
     }
 
     @Override
