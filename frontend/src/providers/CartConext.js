@@ -79,7 +79,7 @@ const CartConext = ({ children }) => {
   return (
     <CartCtx.Provider
       value={{
-        state: opacity,
+        opacity,
         handleCartClick,
         cart,
         handleButtonClick,

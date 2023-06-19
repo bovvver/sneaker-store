@@ -45,7 +45,7 @@ public class SneakerRepositoryTest implements BaseRepositoryTest {
     @DisplayName("Table update testing")
     public void test_update() {
         Optional<Sneaker> updatedOrder = repository.findById(sneakerId);
-        updatedOrder.ifPresent(order -> order.setName("TEST SNEAKER"));
+        updatedOrder.ifPresent(sneaker -> sneaker.setName("TEST SNEAKER"));
         assertEquals(updatedOrder.get().getName(), "TEST SNEAKER");
     }
 

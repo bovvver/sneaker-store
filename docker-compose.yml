@@ -1,0 +1,24 @@
+version: '1'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    container_name: sneaker-front
+    restart: always
+    links:
+      - backend
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    container_name: sneaker-back
+    restart: always
+    links:
+      - db
+  db:
+    image: mysql:8-oracle
+    ports:
+    - "3306:3306"
+    container_name: sneaker-db
+    restart: always

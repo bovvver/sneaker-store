@@ -20,7 +20,7 @@ public class OrderRepositoryTest implements BaseRepositoryTest {
     private int orderId;
 
     @BeforeEach
-    public void test_initialization() {
+    public void testInitialization() {
         Order createdOrder = repository.save(new Order());
         orderId = createdOrder.getId();
     }

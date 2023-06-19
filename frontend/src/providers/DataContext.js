@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { executeFetchSneakers } from "../api/DataApiService";
 
 export const Data = createContext({
   dataRef: null,
@@ -23,9 +23,7 @@ const DataContext = ({ children }) => {
   useEffect(() => {
     const fetchSneakers = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/sneakers", {
-          withCredentials: true,
-        });
+        const response = await executeFetchSneakers();
         dataRef.current = response.data;
         setIsDataFetched(true);
       } catch (error) {

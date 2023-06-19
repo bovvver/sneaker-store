@@ -39,7 +39,6 @@ const AuthContext = ({ children }) => {
     } else {
       try {
         await executeLogout();
-
         handleContextStates(false);
       } catch (error) {
         handleModalState("Error during logout.");
