@@ -11,7 +11,7 @@ import { useNav } from "../../../providers/NavContext";
 import { useAuth } from "../../../providers/AuthContext";
 
 const ExtendedNav = () => {
-  const { state, handleNavClick } = useNav();
+  const { state, handleNavClick, scrollTop } = useNav();
   const { handleLogin, isAuthenticated } = useAuth();
 
   let navStyles = {};
@@ -23,22 +23,27 @@ const ExtendedNav = () => {
     handleLogin();
   };
 
+  const handleLinkClick = () => {
+    handleNavClick();
+    scrollTop();
+  };
+
   return createPortal(
     <Wrapper style={navStyles}>
       <CloseButton />
       <Links>
-        <StyledNavLink to="/sneaker-store/" onClick={handleNavClick} end>
+        <StyledNavLink to="/sneaker-store/" onClick={handleLinkClick} end>
           Main
         </StyledNavLink>
         <StyledNavLink
           to="/sneaker-store/collection/men"
-          onClick={handleNavClick}
+          onClick={handleLinkClick}
         >
           Men
         </StyledNavLink>
         <StyledNavLink
           to="/sneaker-store/collection/women"
-          onClick={handleNavClick}
+          onClick={handleLinkClick}
         >
           Women
         </StyledNavLink>

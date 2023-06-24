@@ -12,7 +12,7 @@ const CartItem = ({ id, img, name, price, pieces, fullPrice }) => {
       <ItemText>
         <p>{name}</p>
         <p>
-          {price} x {pieces} <span>${fullPrice}</span>
+          ${price} x {pieces} <span>${fullPrice}</span>
         </p>
       </ItemText>
       <button onClick={() => deleteItem(id)}>

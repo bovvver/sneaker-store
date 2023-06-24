@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  max-width: 1300px;
   background-color: ${({ theme }) => theme.colors.white};
   border-bottom: 1px solid
     ${({ theme, scroll }) => {
@@ -40,11 +41,7 @@ export const NavBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-
-  ${mq[2]} {
-    font-size: 1.8rem;
-  }
+  font-size: 1.8rem;
 `;
 
 const activeclassname = "active";

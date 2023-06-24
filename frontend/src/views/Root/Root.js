@@ -6,7 +6,7 @@ import { GlobalStyle } from "../../assets/styles/GlobalStyles";
 import MobileNavigation from "../../components/organisms/MobileNavigation/MobileNavigation";
 import Main from "../Main/Main";
 import ExtendedNav from "../../components/molecules/ExtendedNav/ExtendedNav";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ProductSection from "../ProductSection/ProductSection";
 import Cart from "../../components/molecules/Cart/Cart";
 import Summary from "../Summary/Summary";
@@ -40,6 +40,7 @@ const Root = () => {
       <Cart />
       <Modal />
       <Routes>
+        <Route path="/" element={<Navigate to="/sneaker-store/" />} />
         <Route path="/sneaker-store/" element={<Main />} />
         <Route path="/sneaker-store/collection/:gender" element={<Main />} />
         <Route path="/sneaker-store/product/:id" element={<ProductSection />} />
