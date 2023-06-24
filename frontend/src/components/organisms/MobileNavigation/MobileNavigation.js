@@ -6,7 +6,7 @@ import NavBtns from "../../molecules/NavBtns/NavBtns";
 import { useNav } from "../../../providers/NavContext";
 
 const MobileNavigation = () => {
-  const { scroll} = useNav();
+  const { scroll } = useNav();
 
   return (
     <Wrapper scroll={scroll}>

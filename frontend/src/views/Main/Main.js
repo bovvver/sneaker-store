@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import SectionHeader from "../../components/atoms/SectionHeader/SectionHeader";
 import { Wrapper, SortingWrapper } from "./Main.styles";
 import LoadingScreen from "../../components/atoms/LoadingScreen/LoadingScreen";
 import Product from "../../components/molecules/Product/Product";
@@ -12,14 +11,12 @@ import {
   faArrowDown91,
   faArrowDown19,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSize } from "../../providers/ScreenSizeContext";
 import { useData } from "../../providers/DataContext";
 import Footer from "../../components/organisms/Footer/Footer";
 
 const Main = () => {
   const [details, setDetails] = useState([]);
   const { gender } = useParams();
-  const { screenWidth } = useSize();
   const [loading, setLoading] = useState(true);
   const { dataRef, isDataFetched } = useData();
 
@@ -73,9 +70,7 @@ const Main = () => {
   return (
     <>
       <Wrapper>
-        <SectionHeader title={gender === undefined ? "Our offer" : gender} />
         <SortingWrapper>
-          {screenWidth > 768 ? <p>sorting</p> : null}
           <FontAwesomeIcon
             onClick={setAlpabeticalDetails}
             icon={faArrowDownAZ}

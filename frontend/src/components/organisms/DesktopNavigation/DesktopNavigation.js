@@ -12,17 +12,19 @@ import { useNav } from "../../../providers/NavContext";
 
 const DesktopNavigation = () => {
   const { handleLogin, isAuthenticated } = useAuth();
-  const { scroll } = useNav();
+  const { scroll, scrollTop } = useNav();
 
   return (
     <Wrapper scroll={scroll}>
       <SiteTitle />
       <NavBlock>
-        <StyledNavLink to="/sneaker-store/" end>
+        <StyledNavLink to="/sneaker-store/" onClick={scrollTop} end>
           main page
         </StyledNavLink>
-        <StyledNavLink to="/sneaker-store/collection/men">men</StyledNavLink>
-        <StyledNavLink to="/sneaker-store/collection/women">
+        <StyledNavLink to="/sneaker-store/collection/men" onClick={scrollTop}>
+          men
+        </StyledNavLink>
+        <StyledNavLink to="/sneaker-store/collection/women" onClick={scrollTop}>
           women
         </StyledNavLink>
         {isAuthenticated ? (
@@ -32,8 +34,8 @@ const DesktopNavigation = () => {
         ) : (
           <StyledNavLink to="/sneaker-store/login">login</StyledNavLink>
         )}
+        <NavBtns />
       </NavBlock>
-      <NavBtns />
     </Wrapper>
   );
 };

@@ -1,24 +1,37 @@
-version: '1'
+version: "3"
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: rozruba/sneaker-store:frontend.1.0
     ports:
-      - "3000:3000"
-    container_name: sneaker-front
-    restart: always
-    links:
-      - backend
-  backend:
-    build: ./backend
-    ports:
-      - "8080:8080"
-    container_name: sneaker-back
-    restart: always
-    links:
-      - db
+      - 3000:80
   db:
-    image: mysql:8-oracle
+    image: mysql:8.0-oracle
+    environment:
+      - MYSQL_ROOT_PASSWORD=defaultRootPassword # root password, change or use default
+      - MYSQL_DATABASE=sneaker_store # database name
+      - MYSQL_USER=defaultUsername # * database username, change or use default
+      - MYSQL_PASSWORD=defaultDbPassword # ** database password, change or use default
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
     ports:
-    - "3306:3306"
-    container_name: sneaker-db
-    restart: always
+      - 3306:3306
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: rozruba/rozruba/sneaker-store:backend.1.0
+    environment:
+      SECRET_KEY: 655368566D5970337336763979244226452948404D635166546A576E5A723474 # you can get one from here https://seanwasere.com/generate-random-hex/ or use default
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/sneaker_store
+      SPRING_DATASOURCE_USERNAME: defaultUsername # *
+      SPRING_DATASOURCE_PASSWORD: defaultDbPassword # **
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+# * - usernames must match
+# ** - password must match

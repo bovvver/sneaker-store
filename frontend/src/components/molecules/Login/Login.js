@@ -33,7 +33,6 @@ const Login = ({ loginState }) => {
         />
         {errors.password ? <span>Required</span> : <span></span>}
         <input type="submit" value="Log In" />
-        <input type="submit" value="Log In with Google" />
       </form>
       <p onClick={loginState}>Create an account</p>
     </>

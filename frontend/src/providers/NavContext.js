@@ -4,6 +4,7 @@ export const Nav = createContext({
   state: false,
   handleNavClick: () => {},
   scroll: 0,
+  scrollTop: () => {},
 });
 
 export const useNav = () => useContext(Nav);
@@ -32,10 +33,12 @@ const NavContext = ({ children }) => {
     setOpen(!open);
   };
 
+  const scrollTop = () => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  };
+
   return (
-    <Nav.Provider
-      value={{ scroll: lastScroll, state: open, handleNavClick }}
-    >
+    <Nav.Provider value={{ scroll: lastScroll, state: open, handleNavClick, scrollTop }}>
       {children}
     </Nav.Provider>
   );
