@@ -24,9 +24,9 @@ $ docker compose up -d
 ```
 
 ## Usage
-After successful installation, switch on your favourite web browser and go to **http://localhost:3000/sneaker-store**
+After successful installation, switch on your favourite web browser and go to **http://localhost:3000/sneaker-store/**
 
->  **Warning**: Make sure that you are on correct URL. During testing, I noticed that browsers like to redirect to https://localhost/sneaker-store. If this is happening to you, just remove **"s"** from the protocol and add port **":3000"** to address.
+>  **Warning**: Make sure that you are on correct URL. During testing, I noticed that browsers like to redirect to https://localhost/sneaker-store/. If this is happening to you, just remove **"s"** from the protocol and add port **":3000"** to address or type the website URL manually.
 
 Using the application is very simple. Just behave like on any internet store. 
 - create your account,
