@@ -20,7 +20,7 @@ import { useAuth } from "../../providers/AuthContext";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Cookies from "universal-cookie";
 import { useData } from "../../providers/DataContext";
-// import { Wrapper, MainWrapper,ExpNav } from "./Root.styles";
+import { Wrapper, MainWrapper } from "./Root.styles";
 
 const Root = () => {
   const { screenWidth } = useSize();
@@ -40,37 +40,49 @@ const Root = () => {
       <GlobalStyle />
       {error ? (
         <ErrorPage />
-      ) : (<>
-        {/* <Wrapper>
-          <ExpNav />
-          <MainWrapper> */}
-            {screenWidth >= 768 ? <DesktopNavigation /> : <MobileNavigation />}
-            {screenWidth <= 768 ? <ExtendedNav /> : null}
-            <Cart />
-            <Modal />
-            <Routes>
-              <Route path="/" element={<Navigate to="/sneaker-store/" />} />
-              <Route path="/sneaker-store/" element={<Main />} />
-              <Route
-                path="/sneaker-store/collection/:gender"
-                element={<Main />}
-              />
-              <Route
-                path="/sneaker-store/product/:id"
-                element={<ProductSection />}
-              />
-              {isAuthenticated ? (
+      ) : (
+        <>
+          <Wrapper>
+            {screenWidth <= 1280 ? null : <DesktopNavigation />}
+            <MainWrapper>
+              {screenWidth >= 1280 ? null : (
                 <>
-                  <Route path="/sneaker-store/summary" element={<Summary />} />
-                  <Route path="/sneaker-store/finish-page" element={<Form />} />
+                  <MobileNavigation />
+                  <ExtendedNav />
                 </>
-              ) : (
-                <Route path="/sneaker-store/login" element={<SignUpForm />} />
               )}
-              <Route path="/sneaker-store/*" element={<NotFound />} />
-            </Routes>
-          {/* </MainWrapper>
-        </Wrapper> */}</>
+              <Cart />
+              <Modal />
+              <Routes>
+                <Route path="/" element={<Navigate to="/sneaker-store/" />} />
+                <Route path="/sneaker-store/" element={<Main />} />
+                <Route
+                  path="/sneaker-store/collection/:gender"
+                  element={<Main />}
+                />
+                <Route
+                  path="/sneaker-store/product/:id"
+                  element={<ProductSection />}
+                />
+                {isAuthenticated ? (
+                  <>
+                    <Route
+                      path="/sneaker-store/summary"
+                      element={<Summary />}
+                    />
+                    <Route
+                      path="/sneaker-store/finish-page"
+                      element={<Form />}
+                    />
+                  </>
+                ) : (
+                  <Route path="/sneaker-store/login" element={<SignUpForm />} />
+                )}
+                <Route path="/sneaker-store/*" element={<NotFound />} />
+              </Routes>
+            </MainWrapper>
+          </Wrapper>
+        </>
       )}
     </ThemeProvider>
   );

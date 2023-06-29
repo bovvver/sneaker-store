@@ -1,41 +1,73 @@
 import React from "react";
-import SiteTitle from "../../atoms/SiteTitle/SiteTitle";
 import {
   Wrapper,
-  NavBlock,
+  Line,
   StyledNavLink,
   StyledLink,
 } from "./DesktopNavigation.styles";
-import NavBtns from "../../molecules/NavBtns/NavBtns";
+import SiteTitle from "../../atoms/SiteTitle/SiteTitle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChild,
+  faChildDress,
+  faChildren,
+  faUser,
+  faLandmark,
+  faRightToBracket,
+  faRightFromBracket,
+  faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../../providers/AuthContext";
 import { useNav } from "../../../providers/NavContext";
+import { useCart } from "../../../providers/CartConext";
 
 const DesktopNavigation = () => {
   const { handleLogin, isAuthenticated } = useAuth();
-  const { scroll, scrollTop } = useNav();
+  const { scrollTop } = useNav();
+  const { handleCartClick } = useCart();
 
   return (
-    <Wrapper scroll={scroll}>
+    <Wrapper>
       <SiteTitle />
-      <NavBlock>
-        <StyledNavLink to="/sneaker-store/" onClick={scrollTop} end>
-          main page
-        </StyledNavLink>
-        <StyledNavLink to="/sneaker-store/collection/men" onClick={scrollTop}>
-          men
-        </StyledNavLink>
-        <StyledNavLink to="/sneaker-store/collection/women" onClick={scrollTop}>
-          women
-        </StyledNavLink>
-        {isAuthenticated ? (
-          <StyledLink to="/sneaker-store/" onClick={handleLogin}>
-            logout
+      <StyledNavLink to="/sneaker-store/" onClick={scrollTop} end>
+        <FontAwesomeIcon icon={faChildren} />
+        Unisex
+      </StyledNavLink>
+      <StyledNavLink to="/sneaker-store/collection/men" onClick={scrollTop}>
+        <FontAwesomeIcon icon={faChild} />
+        Men
+      </StyledNavLink>
+      <StyledNavLink to="/sneaker-store/collection/women" onClick={scrollTop}>
+        <FontAwesomeIcon icon={faChildDress} />
+        Women
+      </StyledNavLink>
+      <Line />
+      {isAuthenticated ? (
+        <>
+          <StyledNavLink to="/sneaker-store/profile">
+            <FontAwesomeIcon icon={faUser} />
+            Profile
+          </StyledNavLink>
+          <StyledLink onClick={handleCartClick}>
+            <FontAwesomeIcon icon={faCartShopping} />
+            Cart
           </StyledLink>
-        ) : (
-          <StyledNavLink to="/sneaker-store/login">login</StyledNavLink>
-        )}
-        <NavBtns />
-      </NavBlock>
+          <StyledNavLink to="/sneaker-store/history">
+            <FontAwesomeIcon icon={faLandmark} />
+            History
+          </StyledNavLink>
+          <Line />
+          <StyledLink to="/sneaker-store/" onClick={handleLogin}>
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            Logout
+          </StyledLink>
+        </>
+      ) : (
+        <StyledNavLink to="/sneaker-store/login">
+          <FontAwesomeIcon icon={faRightToBracket} />
+          Login
+        </StyledNavLink>
+      )}
     </Wrapper>
   );
 };

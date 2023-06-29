@@ -9,9 +9,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 8px 8px 24px 0px ${({ theme }) => theme.colors.shadow};
-  opacity: 0;
   z-index: 50;
-  transition: opacity 0.2s;
 
   ${mq[1]} {
     left: 20%;
@@ -48,4 +46,14 @@ export const EmptyCart = styled.p`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.darkGrayishBlue};
   text-align: center;
+`;
+
+export const ShadowBlock = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.shadowAlpha};
+  z-index: 20;
+  transition: opacity 0.2s;
 `;

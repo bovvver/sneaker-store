@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   margin: 5em auto auto;
   padding: 1.5em 3em;
   max-width: 1300px;
+
+  ${mq[3]} {
+    margin: auto;
+  }
 `;
 
 export const CustomLink = styled(Link)`

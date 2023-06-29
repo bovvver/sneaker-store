@@ -88,7 +88,6 @@ const Main = () => {
             isNavigation={false}
           />
         </SortingWrapper>
-
         <ProductsWrapper>
           {loading ? (
             <LoadingScreen />
