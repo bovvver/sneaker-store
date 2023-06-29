@@ -54,6 +54,7 @@ const ExtendedNav = () => {
                 destination: "/sneaker-store/collection/women",
               },
             ]}
+            isNavigation={true}
           />
           <ExtendingLink
             onClick={handleNavClick}
@@ -68,6 +69,7 @@ const ExtendedNav = () => {
                 destination: "/sneaker-store/history",
               },
             ]}
+            isNavigation={true}
           />
           {isAuthenticated ? (
             <StyledLink to="/sneaker-store/" onClick={handleLoginClick}>

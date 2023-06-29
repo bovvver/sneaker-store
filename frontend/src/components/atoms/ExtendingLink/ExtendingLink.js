@@ -2,8 +2,10 @@ import React from "react";
 import { ExtendButton, LinkWrapper } from "./ExtendingLink.styles";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const ExtendingLink = ({ content, links, onClick }) => {
+const ExtendingLink = ({ content, links, onClick, isNavigation }) => {
   const [extend, setExtend] = useState(false);
 
   const extendList = () => {
@@ -17,13 +19,26 @@ const ExtendingLink = ({ content, links, onClick }) => {
 
   return (
     <>
-      <ExtendButton onClick={extendList}>{content}</ExtendButton>
+      <ExtendButton onClick={extendList} extend={extend}>
+        <p>{content}</p>
+        <FontAwesomeIcon icon={faChevronDown} />
+      </ExtendButton>
       <LinkWrapper extended={extend}>
-        {links.map((el) => (
-          <NavLink key={el.name} to={el.destination} onClick={handleNavClick}>
-            {el.name}
-          </NavLink>
-        ))}
+        {isNavigation
+          ? links.map((el) => (
+              <NavLink
+                key={el.name}
+                to={el.destination}
+                onClick={handleNavClick}
+              >
+                {el.name}
+              </NavLink>
+            ))
+          : links.map((el) => (
+              <button key={el.name} onClick={() => el.fn()}>
+                {el.name}
+              </button>
+            ))}
       </LinkWrapper>
     </>
   );

@@ -7,12 +7,14 @@ const CloseButton = () => {
   const { state, handleNavClick } = useNav();
 
   return (
-    <FontAwesomeIcon
-      icon={faRightFromBracket}
-      onClick={() => {
-        handleNavClick(state);
-      }}
-    />
+    <button>
+      <FontAwesomeIcon
+        icon={faRightFromBracket}
+        onClick={() => {
+          handleNavClick(state);
+        }}
+      />
+    </button>
   );
 };
 

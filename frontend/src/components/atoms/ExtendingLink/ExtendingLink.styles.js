@@ -18,8 +18,11 @@ export const Selectable = css`
   }
 `;
 
-export const ExtendButton = styled.p`
+export const ExtendButton = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 0.1em 0.3em;
   margin: 0.2em 0;
   font-size: 3rem;
@@ -28,6 +31,16 @@ export const ExtendButton = styled.p`
   cursor: pointer;
   font-weight: bold;
   user-select: none;
+
+  & svg {
+    margin-left: 0.4em;
+    font-size: 1.5rem;
+    transform: ${({ extend }) => {
+      if (extend) return "rotate(180deg);";
+      else return "rotate(0deg);";
+    }};
+    transition: transform 0.2s;
+  }
 
   ${Selectable}
 
@@ -62,6 +75,23 @@ export const LinkWrapper = styled.div`
 
     &::before {
       left: 5%;
+    }
+  }
+
+  button{
+    padding: 0 0.6em 0.1em;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover{
+      color: ${({ theme }) => theme.colors.orange};
     }
   }
 `;

@@ -17,13 +17,19 @@ export const Wrapper = styled.div`
     color: ${({ theme }) => theme.colors.white};
   }
 
-  svg {
+  button {
     position: absolute;
     top: 1.7em;
     right: 1.7em;
     font-size: 2.5rem;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.white};
+    background-color: transparent;
+    border: none;
+
+    svg{
+      padding: 0.5em;
+    }
   }
 `;
 
