@@ -5,10 +5,13 @@ import {
   Links,
   StyledNavLink,
   StyledLink,
+  NavContent,
 } from "./ExtendedNav.styles";
 import CloseButton from "../../atoms/CloseButton/CloseButton";
 import { useNav } from "../../../providers/NavContext";
 import { useAuth } from "../../../providers/AuthContext";
+import ExtendingLink from "../../atoms/ExtendingLink/ExtendingLink";
+import SiteTitle from "../../atoms/SiteTitle/SiteTitle";
 
 const ExtendedNav = () => {
   const { state, handleNavClick, scrollTop } = useNav();
@@ -31,32 +34,52 @@ const ExtendedNav = () => {
   return createPortal(
     <Wrapper style={navStyles}>
       <CloseButton />
-      <Links>
-        <StyledNavLink to="/sneaker-store/" onClick={handleLinkClick} end>
-          Main
-        </StyledNavLink>
-        <StyledNavLink
-          to="/sneaker-store/collection/men"
-          onClick={handleLinkClick}
-        >
-          Men
-        </StyledNavLink>
-        <StyledNavLink
-          to="/sneaker-store/collection/women"
-          onClick={handleLinkClick}
-        >
-          Women
-        </StyledNavLink>
-        {isAuthenticated ? (
-          <StyledLink to="/sneaker-store/" onClick={handleLoginClick}>
-            logout
-          </StyledLink>
-        ) : (
-          <StyledNavLink to="/sneaker-store/login" onClick={handleNavClick}>
-            login
-          </StyledNavLink>
-        )}
-      </Links>
+      <NavContent>
+        <SiteTitle />
+        <Links>
+          <ExtendingLink
+            onClick={handleLinkClick}
+            content="offer"
+            links={[
+              {
+                name: "unisex",
+                destination: "/sneaker-store/",
+              },
+              {
+                name: "men",
+                destination: "/sneaker-store/collection/men",
+              },
+              {
+                name: "women",
+                destination: "/sneaker-store/collection/women",
+              },
+            ]}
+          />
+          <ExtendingLink
+            onClick={handleNavClick}
+            content="user"
+            links={[
+              {
+                name: "profile",
+                destination: "/sneaker-store/profile",
+              },
+              {
+                name: "history",
+                destination: "/sneaker-store/history",
+              },
+            ]}
+          />
+          {isAuthenticated ? (
+            <StyledLink to="/sneaker-store/" onClick={handleLoginClick}>
+              logout
+            </StyledLink>
+          ) : (
+            <StyledNavLink to="/sneaker-store/login" onClick={handleNavClick}>
+              login
+            </StyledNavLink>
+          )}
+        </Links>
+      </NavContent>
     </Wrapper>,
     document.getElementById("navigation")
   );

@@ -53,10 +53,9 @@ const LinkStyles = css`
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
-  transition: transform 0.1s, color 0.3s;
+  transition: color 0.3s;
 
   &:hover {
-    transform: scale(1.1);
     color: ${({ theme }) => theme.colors.orange};
   }
 `;
@@ -65,7 +64,6 @@ export const StyledNavLink = styled(NavLink).attrs({ activeclassname })`
   ${LinkStyles}
 
   &.${activeclassname} {
-    transform: scale(1.1);
     color: ${({ theme }) => theme.colors.orange};
   }
 `;

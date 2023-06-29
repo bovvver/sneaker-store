@@ -79,6 +79,7 @@ const Main = () => {
           <FontAwesomeIcon onClick={setDescDetails} icon={faArrowDown19} />
           <FontAwesomeIcon onClick={setAscDetails} icon={faArrowDown91} />
         </SortingWrapper>
+
         <ProductsWrapper>
           {loading ? (
             <LoadingScreen />

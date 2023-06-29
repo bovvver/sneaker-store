@@ -19,10 +19,13 @@ import SignUpForm from "../SignUpForm/SignUpForm";
 import { useAuth } from "../../providers/AuthContext";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Cookies from "universal-cookie";
+import { useData } from "../../providers/DataContext";
+// import { Wrapper, MainWrapper,ExpNav } from "./Root.styles";
 
 const Root = () => {
   const { screenWidth } = useSize();
   const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const { error } = useData();
 
   useEffect(() => {
     const cookies = new Cookies();
@@ -35,26 +38,40 @@ const Root = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      {screenWidth >= 768 ? <DesktopNavigation /> : <MobileNavigation />}
-      {screenWidth <= 768 ? <ExtendedNav /> : null}
-      <Cart />
-      <Modal />
-      <Routes>
-        <Route path="/" element={<Navigate to="/sneaker-store/" />} />
-        <Route path="/sneaker-store/" element={<Main />} />
-        <Route path="/sneaker-store/collection/:gender" element={<Main />} />
-        <Route path="/sneaker-store/product/:id" element={<ProductSection />} />
-        <Route path="/sneaker-store/error" element={<ErrorPage />} />
-        {isAuthenticated ? (
-          <>
-            <Route path="/sneaker-store/summary" element={<Summary />} />
-            <Route path="/sneaker-store/finish-page" element={<Form />} />
-          </>
-        ) : (
-          <Route path="/sneaker-store/login" element={<SignUpForm />} />
-        )}
-        <Route path="/sneaker-store/*" element={<NotFound />} />
-      </Routes>
+      {error ? (
+        <ErrorPage />
+      ) : (<>
+        {/* <Wrapper>
+          <ExpNav />
+          <MainWrapper> */}
+            {screenWidth >= 768 ? <DesktopNavigation /> : <MobileNavigation />}
+            {screenWidth <= 768 ? <ExtendedNav /> : null}
+            <Cart />
+            <Modal />
+            <Routes>
+              <Route path="/" element={<Navigate to="/sneaker-store/" />} />
+              <Route path="/sneaker-store/" element={<Main />} />
+              <Route
+                path="/sneaker-store/collection/:gender"
+                element={<Main />}
+              />
+              <Route
+                path="/sneaker-store/product/:id"
+                element={<ProductSection />}
+              />
+              {isAuthenticated ? (
+                <>
+                  <Route path="/sneaker-store/summary" element={<Summary />} />
+                  <Route path="/sneaker-store/finish-page" element={<Form />} />
+                </>
+              ) : (
+                <Route path="/sneaker-store/login" element={<SignUpForm />} />
+              )}
+              <Route path="/sneaker-store/*" element={<NotFound />} />
+            </Routes>
+          {/* </MainWrapper>
+        </Wrapper> */}</>
+      )}
     </ThemeProvider>
   );
 };

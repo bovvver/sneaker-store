@@ -9,6 +9,7 @@ import {
 import NavBtns from "../../molecules/NavBtns/NavBtns";
 import { useAuth } from "../../../providers/AuthContext";
 import { useNav } from "../../../providers/NavContext";
+import ExtendingDesktopLink from "../../atoms/ExtendingDesktopLink/ExtendingDesktopLink";
 
 const DesktopNavigation = () => {
   const { handleLogin, isAuthenticated } = useAuth();
@@ -34,6 +35,7 @@ const DesktopNavigation = () => {
         ) : (
           <StyledNavLink to="/sneaker-store/login">login</StyledNavLink>
         )}
+        {/* <ExtendingDesktopLink /> */}
         <NavBtns />
       </NavBlock>
     </Wrapper>
