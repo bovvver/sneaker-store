@@ -1,9 +1,13 @@
 package com.github.sneakerstore.user;
 
+import com.github.sneakerstore.history.History;
 import com.github.sneakerstore.order.Order;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +33,8 @@ public class User implements UserDetails {
     private Role role;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Order> cart;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<History> history;
 
     public User(String username, String email, String password, Role role, List<Order> cart) {
         this.username = username;

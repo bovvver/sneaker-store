@@ -1,63 +1,50 @@
 import styled, { css } from "styled-components";
 import { NavLink, Link } from "react-router-dom";
-import mq from "../../../assets/styles/responsiveDesign";
 
 export const Wrapper = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  padding: 1.5em;
-  margin-bottom: 1.5em;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  max-width: 1300px;
-  background-color: ${({ theme }) => theme.colors.white};
-  border-bottom: 1px solid
-    ${({ theme, scroll }) => {
-      if (scroll === 0) return "transparent";
-      else return theme.colors.shadow;
-    }};
-  transition: transform 0.3s, border-bottom 0.1s;
-  z-index: 5;
+  background-color: ${({ theme }) => theme.colors.orange};
+  height: 100vh;
+  width: 20vw;
+  box-shadow: 0px 8px 24px 0px ${({ theme }) => theme.colors.shadow};
 
-  div:last-of-type {
-    width: auto;
-  }
-
-  ${mq[2]} {
-    padding: 1.5em 8.8em;
-  }
-
-  ${mq[3]} {
-    padding: 1.5em 9em;
+  & > a:first-child {
+    padding: 3em 0;
+    font-size: 3rem;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
-export const NavBlock = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
+export const Line = styled.div`
+  margin: 2em 0;
+  width: 65%;
+  height: 2px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 50px;
 `;
 
 const activeclassname = "active";
 
-const LinkStyles = css`
-  position: relative;
-  margin: 0 1em;
-  color: ${({ theme }) => theme.colors.black};
+export const LinkStyles = css`
+  padding: 0.5em 1em;
+  margin: 0.1em 0;
+  width: 70%;
+  font-size: 1.8rem;
   text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: transform 0.1s, color 0.3s;
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: 10px;
+  transition: background-color 0.3s;
 
   &:hover {
-    transform: scale(1.1);
-    color: ${({ theme }) => theme.colors.orange};
+    background-color: ${({ theme }) => theme.colors.lightOrange};
+  }
+
+  svg {
+    margin-right: 0.5em;
   }
 `;
 
@@ -65,8 +52,7 @@ export const StyledNavLink = styled(NavLink).attrs({ activeclassname })`
   ${LinkStyles}
 
   &.${activeclassname} {
-    transform: scale(1.1);
-    color: ${({ theme }) => theme.colors.orange};
+    background-color: ${({ theme }) => theme.colors.lightOrange};
   }
 `;
 

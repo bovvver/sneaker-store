@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   margin: 5em auto auto;
   padding: 1.5em 3em;
   max-width: 1300px;
+
+  ${mq[3]} {
+    margin: auto;
+  }
 `;
 
 export const CustomLink = styled(Link)`
@@ -32,25 +36,20 @@ export const ProductsWrapper = styled.div`
 `;
 
 export const SortingWrapper = styled.div`
+  padding: 0 1em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   p {
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
+    color: ${({ theme }) => theme.colors.black};
   }
 
   svg {
-    margin: 0 0.5em;
-    padding: 0.3em;
-    font-size: 2.5rem;
-    cursor: pointer;
-    border-radius: 50%;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.lightGrayishBlue};
-    }
+    color: ${({ theme }) => theme.colors.black};
   }
 `;

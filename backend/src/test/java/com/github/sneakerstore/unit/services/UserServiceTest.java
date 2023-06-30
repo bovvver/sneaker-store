@@ -32,11 +32,11 @@ public class UserServiceTest {
     public void should_clear_cart() {
         User user = new User("testUser", null, null, null, List.of());
 
-        Mockito.when(userService.clearCart(1)).thenReturn(ResponseEntity.ok().body(user.getCart()));
+        Mockito.when(userService.finishOrder(1)).thenReturn(ResponseEntity.ok().body(user.getCart()));
 
-        ResponseEntity<List<Order>> result = userService.clearCart(1);
+        ResponseEntity<List<Order>> result = userService.finishOrder(1);
         assertTrue((Objects.requireNonNull(result.getBody())).isEmpty());
-        Mockito.verify(userService, Mockito.times(1)).clearCart(1);
+        Mockito.verify(userService, Mockito.times(1)).finishOrder(1);
     }
 
     @Test

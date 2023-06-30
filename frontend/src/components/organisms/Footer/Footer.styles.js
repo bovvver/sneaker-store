@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  position: sticky;
-  bottom: 0%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

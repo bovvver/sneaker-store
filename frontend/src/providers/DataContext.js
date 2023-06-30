@@ -11,12 +11,14 @@ import { executeFetchSneakers } from "../api/DataApiService";
 export const Data = createContext({
   dataRef: null,
   isDataFetched: false,
+  error: false,
 });
 
 export const useData = () => useContext(Data);
 
 const DataContext = ({ children }) => {
   const [isDataFetched, setIsDataFetched] = useState(false);
+  const [error, setError] = useState(false);
   const dataRef = useRef();
   const navigate = useNavigate();
 
@@ -27,7 +29,7 @@ const DataContext = ({ children }) => {
         dataRef.current = response.data;
         setIsDataFetched(true);
       } catch (error) {
-        navigate("/sneaker-store/error");
+        setError(true);
       }
     };
 
@@ -41,6 +43,7 @@ const DataContext = ({ children }) => {
       value={{
         dataRef,
         isDataFetched,
+        error
       }}
     >
       {children}

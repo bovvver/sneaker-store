@@ -59,27 +59,27 @@ public class UserControllerTest {
     @Test
     @DisplayName("Clear cart")
     public void should_clear_cart() throws Exception {
-        Mockito.when(userService.clearCart(testUserId)).thenReturn(ResponseEntity.ok().build());
+        Mockito.when(userService.finishOrder(testUserId)).thenReturn(ResponseEntity.ok().build());
 
         mockMvc.perform(post("/users/clear-cart")
                         .with(jwt())
                         .cookie(cookie))
                 .andExpect(status().isOk());
 
-        Mockito.verify(userService, Mockito.times(1)).clearCart(testUserId);
+        Mockito.verify(userService, Mockito.times(1)).finishOrder(testUserId);
     }
 
     @Test
     @DisplayName("Clear cart when empty")
     public void should_throw_404_when_cart_is_empty() throws Exception {
-        Mockito.when(userService.clearCart(1)).thenReturn(ResponseEntity.notFound().build());
+        Mockito.when(userService.finishOrder(1)).thenReturn(ResponseEntity.notFound().build());
 
         mockMvc.perform(post("/users/clear-cart")
                         .with(jwt())
                         .cookie(cookie))
                 .andExpect(status().isNotFound());
 
-        Mockito.verify(userService, Mockito.times(1)).clearCart(testUserId);
+        Mockito.verify(userService, Mockito.times(1)).finishOrder(testUserId);
     }
 
     @Test

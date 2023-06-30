@@ -1,6 +1,7 @@
 package com.github.sneakerstore.sneaker;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.sneakerstore.history.History;
 import com.github.sneakerstore.order.Order;
 import com.github.sneakerstore.photo.Photo;
 import jakarta.persistence.*;
@@ -30,8 +31,10 @@ public class Sneaker {
     @JsonIgnore
     @OneToOne(mappedBy = "sneaker", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Order order;
+    @OneToOne(mappedBy = "sneaker", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private History history;
 
-    public Sneaker(String name, String producer, String description, double price, String gender, List<Photo> photos, Order order) {
+    public Sneaker(String name, String producer, String description, double price, String gender, List<Photo> photos, Order order, History history) {
         this.name = name;
         this.producer = producer;
         this.description = description;
@@ -39,6 +42,7 @@ public class Sneaker {
         this.gender = gender;
         this.photos = photos;
         this.order = order;
+        this.history = history;
     }
 
     // TESTING CONSTRUCTOR

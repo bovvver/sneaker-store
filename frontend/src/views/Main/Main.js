@@ -4,15 +4,9 @@ import LoadingScreen from "../../components/atoms/LoadingScreen/LoadingScreen";
 import Product from "../../components/molecules/Product/Product";
 import { useParams } from "react-router-dom";
 import { CustomLink, ProductsWrapper } from "./Main.styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowDownAZ,
-  faArrowDownZA,
-  faArrowDown91,
-  faArrowDown19,
-} from "@fortawesome/free-solid-svg-icons";
 import { useData } from "../../providers/DataContext";
 import Footer from "../../components/organisms/Footer/Footer";
+import ExtendingLink from "../../components/atoms/ExtendingLink/ExtendingLink";
 
 const Main = () => {
   const [details, setDetails] = useState([]);
@@ -71,13 +65,28 @@ const Main = () => {
     <>
       <Wrapper>
         <SortingWrapper>
-          <FontAwesomeIcon
-            onClick={setAlpabeticalDetails}
-            icon={faArrowDownAZ}
+          <ExtendingLink
+            content="sort by "
+            links={[
+              {
+                name: "Alphabet (A-Z)",
+                fn: setAlpabeticalDetails,
+              },
+              {
+                name: "Alphabet (Z-A)",
+                fn: setReverseDetails,
+              },
+              {
+                name: "Price asc.",
+                fn: setAscDetails,
+              },
+              {
+                name: "Price desc.",
+                fn: setDescDetails,
+              },
+            ]}
+            isNavigation={false}
           />
-          <FontAwesomeIcon onClick={setReverseDetails} icon={faArrowDownZA} />
-          <FontAwesomeIcon onClick={setDescDetails} icon={faArrowDown19} />
-          <FontAwesomeIcon onClick={setAscDetails} icon={faArrowDown91} />
         </SortingWrapper>
         <ProductsWrapper>
           {loading ? (

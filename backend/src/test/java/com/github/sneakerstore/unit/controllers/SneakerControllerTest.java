@@ -29,8 +29,8 @@ public class SneakerControllerTest {
     @Test
     @DisplayName("Retrieve all sneakers")
     public void should_retrieve_all_sneakers() throws Exception {
-        Sneaker sneaker1 = new Sneaker("Model 1", "Brand 1", "Description 1", 100.00, "men", null, null);
-        Sneaker sneaker2 = new Sneaker("Model 2", "Brand 2", "Description 2", 200.00, "women", null, null);
+        Sneaker sneaker1 = new Sneaker("Model 1", "Brand 1", "Description 1", 100.00, "men", null, null, null);
+        Sneaker sneaker2 = new Sneaker("Model 2", "Brand 2", "Description 2", 200.00, "women", null, null,null);
         List<Sneaker> sneakers = List.of(sneaker1, sneaker2);
 
         Mockito.when(sneakerService.findAll()).thenReturn(sneakers);

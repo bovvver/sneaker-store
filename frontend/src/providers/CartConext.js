@@ -5,8 +5,13 @@ import {
   executeCartFetch,
   executeItemAddition,
   executeItemDeletion,
-  executeCartClear,
+  executeOrderFinish,
 } from "../api/CartApiService";
+import {
+  executeHistoryCleaning,
+  executeHistoryFetch,
+  executeHistoryItemDeletion,
+} from "../api/HistoryApiService";
 
 export const CartCtx = createContext({
   opacity: false,
@@ -14,7 +19,10 @@ export const CartCtx = createContext({
   cart: [],
   handleButtonClick: () => {},
   deleteItem: () => {},
-  clearCart: () => {},
+  finishOrder: () => {},
+  history: [],
+  deleteFromHistory: () => {},
+  deleteHistoryItem: () => {},
 });
 
 export const useCart = () => useContext(CartCtx);
@@ -22,15 +30,18 @@ export const useCart = () => useContext(CartCtx);
 const CartConext = ({ children }) => {
   const [opacity, setOpacity] = useState(false);
   const [cart, setCart] = useState([]);
+  const [history, setHistory] = useState([]);
   const { isAuthenticated, userId, token } = useAuth();
   const { handleModalState } = useModal();
 
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await executeCartFetch();
+        const cartResponse = await executeCartFetch();
+        const historyResponse = await executeHistoryFetch();
 
-        setCart(response);
+        setCart(cartResponse);
+        setHistory(historyResponse);
       } catch (error) {
         handleModalState(error.message);
       }
@@ -66,13 +77,36 @@ const CartConext = ({ children }) => {
     }
   };
 
-  const clearCart = async () => {
+  const finishOrder = async () => {
     try {
-      const response = await executeCartClear();
+      const cartResponse = await executeOrderFinish();
+      const historyResponse = await executeHistoryFetch();
 
-      setCart(response);
+
+      setCart(cartResponse);
+      setHistory(historyResponse);
     } catch (error) {
-      handleModalState("Error during clearing cart");
+      handleModalState("Error during order completion");
+    }
+  };
+
+  const clearHistory = async () => {
+    try {
+      const response = await executeHistoryCleaning();
+
+      setHistory(response);
+    } catch (error) {
+      handleModalState("Error during clearing history");
+    }
+  };
+
+  const deleteHistoryItem = async (sneakerId) => {
+    try {
+      const response = await executeHistoryItemDeletion(sneakerId);
+
+      setHistory(response);
+    } catch (error) {
+      handleModalState("Error during deleting an item");
     }
   };
 
@@ -84,7 +118,10 @@ const CartConext = ({ children }) => {
         cart,
         handleButtonClick,
         deleteItem,
-        clearCart,
+        finishOrder,
+        history,
+        clearHistory,
+        deleteHistoryItem,
       }}
     >
       {children}
