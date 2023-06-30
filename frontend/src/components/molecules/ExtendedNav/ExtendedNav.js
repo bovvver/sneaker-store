@@ -56,21 +56,9 @@ const ExtendedNav = () => {
             ]}
             isNavigation={true}
           />
-          <ExtendingLink
-            onClick={handleNavClick}
-            content="user"
-            links={[
-              {
-                name: "profile",
-                destination: "/sneaker-store/profile",
-              },
-              {
-                name: "history",
-                destination: "/sneaker-store/history",
-              },
-            ]}
-            isNavigation={true}
-          />
+          <StyledNavLink to="/sneaker-store/history" onClick={handleNavClick}>
+              history
+            </StyledNavLink>
           {isAuthenticated ? (
             <StyledLink to="/sneaker-store/" onClick={handleLoginClick}>
               logout

@@ -11,7 +11,6 @@ import {
   faChild,
   faChildDress,
   faChildren,
-  faUser,
   faLandmark,
   faRightToBracket,
   faRightFromBracket,
@@ -44,10 +43,6 @@ const DesktopNavigation = () => {
       <Line />
       {isAuthenticated ? (
         <>
-          <StyledNavLink to="/sneaker-store/profile">
-            <FontAwesomeIcon icon={faUser} />
-            Profile
-          </StyledNavLink>
           <StyledLink onClick={handleCartClick}>
             <FontAwesomeIcon icon={faCartShopping} />
             Cart
