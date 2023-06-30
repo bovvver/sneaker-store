@@ -1,24 +1,26 @@
-package com.github.sneakerstore.order;
+package com.github.sneakerstore.history;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.github.sneakerstore.interfaces.OrderBasedEntity;
+import com.github.sneakerstore.order.Order;
 import com.github.sneakerstore.sneaker.Sneaker;
 import com.github.sneakerstore.user.User;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-@Table(name = "order_table")
-public class Order extends OrderBasedEntity {
-    public Order(Sneaker sneaker, int quantity, User owner) {
+public class History extends OrderBasedEntity {
+    public History(Sneaker sneaker, int quantity, User owner) {
         super(sneaker, quantity, owner);
     }
 
-    public void changeQuantity(int quantity){
-        this.quantity += quantity;
+    public History(Order order){
+        this.id = order.getId();
+        this.sneaker = order.getSneaker();
+        this.quantity = order.getQuantity();
+        this.owner = order.getOwner();
     }
 }

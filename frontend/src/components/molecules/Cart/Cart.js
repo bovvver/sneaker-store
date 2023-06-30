@@ -54,6 +54,7 @@ const Cart = () => {
                       price={el.sneaker.price}
                       pieces={el.quantity}
                       fullPrice={el.quantity * +el.sneaker.price}
+                      deletable={true}
                     />
                   ))}
                   <Button onClick={handleClick} content="Checkout" />

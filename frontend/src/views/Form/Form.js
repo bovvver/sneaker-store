@@ -7,7 +7,6 @@ import * as yup from "yup";
 import { useModal } from "../../providers/ModalContext";
 import { useCart } from "../../providers/CartConext";
 import { useNavigate } from "react-router-dom";
-import SvgWaves from "../../components/atoms/SvgWaves/SvgWaves";
 
 const schema = yup
   .object({
@@ -53,7 +52,7 @@ const schema = yup
 
 const Form = () => {
   const { handleModalState } = useModal();
-  const { clearCart } = useCart();
+  const { finishOrder } = useCart();
   const navigate = useNavigate();
 
   const {
@@ -63,7 +62,7 @@ const Form = () => {
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = () => {
     navigate("/sneaker-store/");
-    clearCart();
+    finishOrder();
     handleModalState("Order successful!");
   };
 
@@ -151,7 +150,6 @@ const Form = () => {
           <SubmitButton data-testid="btn" type="submit" value="Order" />
         </StyledForm>
       </Wrapper>
-      <SvgWaves />
     </>
   );
 };

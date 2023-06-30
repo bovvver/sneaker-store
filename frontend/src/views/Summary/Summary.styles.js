@@ -22,3 +22,15 @@ export const TotalPrice = styled.p`
     font-weight: bold;
   }
 `;
+
+export const NoProductsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const NoProductsText = styled.p`
+  padding: 3em;
+  font-size: 3.5rem;
+  text-align: center;
+`;

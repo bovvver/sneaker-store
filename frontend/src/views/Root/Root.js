@@ -68,11 +68,15 @@ const Root = () => {
                   <>
                     <Route
                       path="/sneaker-store/summary"
-                      element={<Summary />}
+                      element={<Summary isHistory={false} />}
                     />
                     <Route
                       path="/sneaker-store/finish-page"
                       element={<Form />}
+                    />
+                    <Route
+                      path="/sneaker-store/history"
+                      element={<Summary isHistory={true}/>}
                     />
                   </>
                 ) : (

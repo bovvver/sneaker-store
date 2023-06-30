@@ -24,9 +24,9 @@ export const executeItemDeletion = async (sneakerId) => {
     .then((res) => res.data);
 };
 
-export const executeCartClear = async () => {
+export const executeOrderFinish = async () => {
   return await apiClient
-    .post(`/users/clear-cart`, null, {
+    .post(`/users/cart/finish`, null, {
       withCredentials: true,
     })
     .then((res) => res.data);
