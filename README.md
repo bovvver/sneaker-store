@@ -8,8 +8,6 @@ Full-stack <strong>educational</strong> project imitating real sneaker store.</p
 
 ## Gallery
 
-## Gallery
-
 <img src="/frontend/public/images/READMEphotos/mainpage.png" width="30%"></img> <img src="/frontend/public/images/READMEphotos/cart.png" width="30%"></img> <img src="/frontend/public/images/READMEphotos/product.png" width="30%"></img>
 
 ## Installation with Docker
