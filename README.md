@@ -75,7 +75,7 @@ Using the application is very simple. Just behave like on any internet store.
 - add options to log in via other services such as Google, GitHub etc,
 - add profile features like changing photo or viewing shopping history,
 
-If you have an idea contact me via this button [:red_circle:](mailto:wronski2002@wp.pl)
+If you have an idea contact me via this button [:red_circle:](mailto:j@wronski.cloud)
 
 ## Credits
 
