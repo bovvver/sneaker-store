@@ -6,6 +6,10 @@
 <p>
 Full-stack <strong>educational</strong> project imitating real sneaker store.</p><br/></div>
 
+## Preview
+
+https://github.com/MemeeMaster/sneaker-store/assets/85307370/f6410e8c-3ac6-49b7-9581-1cf73eddf7be
+
 ## Gallery
 
 <img src="/frontend/public/images/READMEphotos/mainpage.png" width="30%"></img> <img src="/frontend/public/images/READMEphotos/cart.png" width="30%"></img> <img src="/frontend/public/images/READMEphotos/product.png" width="30%"></img>
